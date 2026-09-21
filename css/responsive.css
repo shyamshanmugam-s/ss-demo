@@ -1,0 +1,221 @@
+/* ==========================================================================
+   SS — RESPONSIVE DESIGN & ACCESSIBILITY
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   TABLETS & SMALL LAPTOPS (<= 1024px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .works-grid {
+    gap: 2rem;
+  }
+  
+  .work-card {
+    grid-column: span 12;
+  }
+
+  .work-card:nth-child(even) {
+    transform: none;
+  }
+
+  .work-card:nth-child(even):hover {
+    transform: translateY(-8px);
+  }
+
+  .digital-lab-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .digital-lab-canvas-wrap {
+    height: 380px;
+  }
+
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .engineering-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-top-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   MOBILE & TABLET PORTRAIT (<= 768px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  :root {
+    --header-height: 72px;
+  }
+
+  .nav-pill-menu {
+    display: none;
+  }
+
+  .service-row {
+    grid-template-columns: 50px 1fr;
+    gap: 1rem;
+    padding: 1.75rem 0;
+  }
+
+  .service-desc {
+    grid-column: 2 / -1;
+  }
+
+  .service-arrow {
+    display: none;
+  }
+
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-top-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .hero-bottom-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .drawer-panel {
+    max-width: 100%;
+  }
+
+  /* Floating Mobile Navigation */
+  .mobile-bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    background: rgba(10, 12, 16, 0.88);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-full);
+    backdrop-filter: var(--blur-glass);
+    -webkit-backdrop-filter: var(--blur-glass);
+    padding: 0.5rem 0.75rem;
+    z-index: var(--z-header);
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  }
+
+  .mobile-nav-item {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    padding: 0.4rem 0.65rem;
+    border-radius: var(--radius-full);
+    transition: all var(--transition-fast);
+  }
+
+  .mobile-nav-item.active, .mobile-nav-item:hover {
+    color: var(--accent-cyan);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .mobile-nav-cta {
+    background: var(--text-primary);
+    color: var(--bg-void) !important;
+    font-weight: 700;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-bottom-nav {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   SMALL MOBILE (320px - 430px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 430px) {
+  .container, .container-wide, .container-reading {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .section {
+    padding-top: var(--space-lg);
+    padding-bottom: var(--space-lg);
+  }
+
+  .cta-box {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .contact-quick-strip {
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+  }
+
+  .modal-dialog {
+    padding: 1.5rem 1rem;
+  }
+
+  .digital-lab-canvas-wrap {
+    height: 300px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   TOUCH DEVICE CURSOR DEACTIVATION
+   -------------------------------------------------------------------------- */
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor {
+    display: none !important;
+  }
+
+  * {
+    cursor: auto !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   REDUCED MOTION SUPPORT
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .title-word, .hero-description, .hero-actions {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .manifesto-word {
+    opacity: 1 !important;
+  }
+
+  .marquee-track {
+    animation: none !important;
+  }
+
+  #preloader {
+    display: none !important;
+  }
+}
