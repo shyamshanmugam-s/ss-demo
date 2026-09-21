@@ -164,17 +164,24 @@ export const ProcessSection: FC<ProcessSectionProps> = ({ onOpenCommission }) =>
   useGSAPContext(() => {
     if (prefersReducedMotion) return;
 
-    gsap.from(".process-selector-btn", {
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 75%",
+    gsap.fromTo(
+      ".process-selector-btn",
+      {
+        opacity: 0,
+        y: 16,
       },
-      opacity: 0,
-      y: 16,
-      duration: 0.6,
-      stagger: 0.05,
-      ease: "power3.out",
-    });
+      {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        stagger: 0.05,
+        ease: "power3.out",
+      }
+    );
   }, sectionRef, [prefersReducedMotion]);
 
   // Stage change transition

@@ -110,28 +110,42 @@ export const SystemsSection: FC<SystemsSectionProps> = ({ onOpenCommission }) =>
   useGSAPContext(() => {
     if (prefersReducedMotion) return;
 
-    gsap.from(".system-card", {
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 75%",
+    gsap.fromTo(
+      ".system-card",
+      {
+        opacity: 0,
+        y: 24,
       },
-      opacity: 0,
-      y: 24,
-      duration: 0.7,
-      stagger: 0.08,
-      ease: "power3.out",
-    });
+      {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.7,
+        stagger: 0.08,
+        ease: "power3.out",
+      }
+    );
 
-    gsap.from(".system-bridge-card", {
-      scrollTrigger: {
-        trigger: ".system-bridge-card",
-        start: "top 85%",
+    gsap.fromTo(
+      ".system-bridge-card",
+      {
+        opacity: 0,
+        y: 20,
       },
-      opacity: 0,
-      y: 20,
-      duration: 0.8,
-      ease: "power3.out",
-    });
+      {
+        scrollTrigger: {
+          trigger: ".system-bridge-card",
+          start: "top 85%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power3.out",
+      }
+    );
   }, sectionRef, [prefersReducedMotion]);
 
   const handleScrollToWork = () => {

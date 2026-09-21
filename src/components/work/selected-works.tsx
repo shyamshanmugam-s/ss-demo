@@ -36,6 +36,7 @@ export const SelectedWorks: FC<SelectedWorksProps> = ({
         trigger: card,
         start: "top center",
         end: "bottom center",
+        refreshPriority: 10,
         onEnter: () => setActiveProjectIndex(i),
         onEnterBack: () => setActiveProjectIndex(i),
       });
@@ -49,6 +50,7 @@ export const SelectedWorks: FC<SelectedWorksProps> = ({
           end: "top 85px",
           pin: true,
           pinSpacing: false,
+          refreshPriority: 10,
         });
 
         // Receding interpolation driven by next card arrival
@@ -62,6 +64,7 @@ export const SelectedWorks: FC<SelectedWorksProps> = ({
             start: "top bottom",
             end: "top 85px",
             scrub: 0.5,
+            refreshPriority: 10,
           },
         });
       }

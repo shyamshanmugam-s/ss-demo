@@ -106,17 +106,24 @@ export const DigitalLab: FC<DigitalLabProps> = ({ onOpenCommission }) => {
   useGSAPContext(() => {
     if (prefersReducedMotion) return;
 
-    gsap.from(".matrix-card", {
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 75%",
+    gsap.fromTo(
+      ".matrix-card",
+      {
+        opacity: 0,
+        y: 24,
       },
-      opacity: 0,
-      y: 24,
-      duration: 0.7,
-      stagger: 0.1,
-      ease: "power3.out",
-    });
+      {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.7,
+        stagger: 0.1,
+        ease: "power3.out",
+      }
+    );
   }, sectionRef, [prefersReducedMotion]);
 
   return (

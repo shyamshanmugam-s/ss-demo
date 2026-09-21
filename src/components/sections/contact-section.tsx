@@ -25,17 +25,24 @@ export const ContactSection: FC<ContactSectionProps> = ({ onOpenCommission }) =>
   useGSAPContext(() => {
     if (prefersReducedMotion) return;
 
-    gsap.from(".contact-reveal", {
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 75%",
+    gsap.fromTo(
+      ".contact-reveal",
+      {
+        opacity: 0,
+        y: 35,
       },
-      opacity: 0,
-      y: 35,
-      duration: 0.9,
-      stagger: 0.1,
-      ease: "power3.out",
-    });
+      {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.9,
+        stagger: 0.1,
+        ease: "power3.out",
+      }
+    );
   }, sectionRef, [prefersReducedMotion]);
 
   return (

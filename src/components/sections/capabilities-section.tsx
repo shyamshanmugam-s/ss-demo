@@ -103,17 +103,24 @@ export const CapabilitiesSection: FC<CapabilitiesSectionProps> = ({
   useGSAPContext(() => {
     if (prefersReducedMotion) return;
 
-    gsap.from(".service-pillar-card", {
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 75%",
+    gsap.fromTo(
+      ".service-pillar-card",
+      {
+        opacity: 0,
+        y: 24,
       },
-      opacity: 0,
-      y: 24,
-      duration: 0.7,
-      stagger: 0.08,
-      ease: "power3.out",
-    });
+      {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.7,
+        stagger: 0.08,
+        ease: "power3.out",
+      }
+    );
   }, sectionRef, [prefersReducedMotion]);
 
   const handleScrollToSystems = () => {

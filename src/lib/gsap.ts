@@ -13,6 +13,10 @@ if (typeof window !== "undefined") {
 
   // Lag smoothing prevents massive jumps on tab reactivation
   gsap.ticker.lagSmoothing(1000, 16);
+
+  // Expose to window for DevTools inspection
+  (window as any).gsap = gsap;
+  (window as any).ScrollTrigger = ScrollTrigger;
 }
 
 export { gsap, ScrollTrigger };

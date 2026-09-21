@@ -202,17 +202,24 @@ export const IndustriesSection: FC<IndustriesSectionProps> = ({
   useGSAPContext(() => {
     if (prefersReducedMotion) return;
 
-    gsap.from(".industry-selector-item", {
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 75%",
+    gsap.fromTo(
+      ".industry-selector-item",
+      {
+        opacity: 0,
+        y: 18,
       },
-      opacity: 0,
-      y: 18,
-      duration: 0.6,
-      stagger: 0.05,
-      ease: "power3.out",
-    });
+      {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        stagger: 0.05,
+        ease: "power3.out",
+      }
+    );
   }, sectionRef, [prefersReducedMotion]);
 
   // Subtle crossfade animation when tab changes

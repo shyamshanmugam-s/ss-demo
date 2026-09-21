@@ -1,4 +1,4 @@
-﻿import { useRef, type FC } from "react";
+import { useRef, type FC } from "react";
 import { useGSAPContext } from "@/hooks/use-gsap-context";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { gsap } from "@/lib/gsap";
@@ -11,17 +11,24 @@ export const AboutSection: FC = () => {
   useGSAPContext(() => {
     if (prefersReducedMotion) return;
 
-    gsap.from(".about-reveal", {
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 75%",
+    gsap.fromTo(
+      ".about-reveal",
+      {
+        opacity: 0,
+        y: 35,
       },
-      opacity: 0,
-      y: 35,
-      duration: 0.9,
-      stagger: 0.1,
-      ease: "power3.out",
-    });
+      {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.9,
+        stagger: 0.1,
+        ease: "power3.out",
+      }
+    );
   }, sectionRef, [prefersReducedMotion]);
 
   const pillars = [

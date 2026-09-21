@@ -50,7 +50,13 @@ export const LenisProvider: FC<LenisProviderProps> = ({ children }) => {
     gsap.ticker.add(updateTicker);
     gsap.ticker.lagSmoothing(0);
 
+    // One coordinated ScrollTrigger refresh after initial DOM layout & font stabilization
+    const refreshTimer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
+
     return () => {
+      clearTimeout(refreshTimer);
       gsap.ticker.remove(updateTicker);
       lenis.destroy();
       lenisRef.current = null;

@@ -1,9 +1,14 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
+
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 /**
  * useGSAPContext: Safely wraps GSAP animations in a gsap.context()
  * with automatic scoping and memory cleanup on unmount.
+ * Uses useIsomorphicLayoutEffect so triggers and styles are registered
+ * before browser paint.
  */
 export function useGSAPContext(
   animationCallback: (context: gsap.Context) => void,
@@ -12,7 +17,7 @@ export function useGSAPContext(
 ) {
   const ctxRef = useRef<gsap.Context | null>(null);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const scope = scopeRef?.current || undefined;
     const ctx = gsap.context((self) => {
       animationCallback(self);
@@ -28,3 +33,4 @@ export function useGSAPContext(
 
   return ctxRef;
 }
+

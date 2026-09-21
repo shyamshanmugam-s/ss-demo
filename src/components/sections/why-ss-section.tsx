@@ -74,28 +74,42 @@ export const WhySSSection: FC<WhySSSectionProps> = ({ onOpenCommission }) => {
   useGSAPContext(() => {
     if (prefersReducedMotion) return;
 
-    gsap.from(".why-ss-card", {
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 75%",
+    gsap.fromTo(
+      ".why-ss-card",
+      {
+        opacity: 0,
+        y: 24,
       },
-      opacity: 0,
-      y: 24,
-      duration: 0.7,
-      stagger: 0.08,
-      ease: "power3.out",
-    });
+      {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.7,
+        stagger: 0.08,
+        ease: "power3.out",
+      }
+    );
 
-    gsap.from(".why-ss-micro", {
-      scrollTrigger: {
-        trigger: ".why-ss-micro",
-        start: "top 85%",
+    gsap.fromTo(
+      ".why-ss-micro",
+      {
+        opacity: 0,
+        y: 16,
       },
-      opacity: 0,
-      y: 16,
-      duration: 0.8,
-      ease: "power3.out",
-    });
+      {
+        scrollTrigger: {
+          trigger: ".why-ss-micro",
+          start: "top 85%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power3.out",
+      }
+    );
   }, sectionRef, [prefersReducedMotion]);
 
   const handleScrollToWork = () => {
