@@ -2501,6 +2501,453 @@ export const PROJECTS: Project[] = [
         "Engineered an evocative, high-performance digital presence showcasing refined residential architecture, material craftsmanship, and considered spatial storytelling.",
     },
   },
+  {
+    id: "vanta-performance",
+    number: "07",
+    title: "VANTA PERFORMANCE",
+    slug: "vanta-performance",
+    industry: "Fitness & Athletic Performance",
+    subIndustry: "High-Performance Training Studio & Contrast Recovery Sanctuary",
+    type: "CONCEPT",
+    status: "LIVE",
+    tag: "CONCEPT · LIVE",
+    category: "Fitness & Athletic Performance — Concept Experience",
+    year: "2026",
+    shortDescription:
+      "A conceptual digital experience for a high-performance training studio and contrast recovery sanctuary exploring training disciplines, coaching philosophies, and spatial discovery.",
+    description:
+      "A conceptual digital experience for a high-performance training studio and contrast recovery sanctuary exploring training disciplines, coaching philosophies, and spatial discovery.",
+    thumbnail: "/assets/images/vanta-performance.jpg",
+    image: "/assets/images/vanta-performance.jpg",
+    heroImage: "/assets/images/vanta/hero_vanta_training.jpg",
+    tags: [
+      "Fitness",
+      "Athletic Performance",
+      "Strength Training",
+      "Contrast Recovery",
+      "Editorial Journal",
+      "Spatial Architecture",
+    ],
+    featured: true,
+    services: [
+      "Athletic UI / UX Architecture",
+      "Interactive Training Discovery",
+      "Performance Space Explorer",
+      "Editorial Journal System",
+      "Consultation Workflow",
+      "Responsive System Engineering",
+    ],
+    technology: [
+      "React 19",
+      "TypeScript",
+      "Vite 8",
+      "Tailwind CSS 4",
+      "GSAP & ScrollTrigger",
+      "Lucide Icons",
+      "Lenis Smooth Scroll",
+    ],
+    technologies: [
+      "React 19",
+      "TypeScript",
+      "Vite 8",
+      "Tailwind CSS 4",
+      "GSAP & ScrollTrigger",
+      "Lucide Icons",
+      "Lenis Smooth Scroll",
+    ],
+    caseStudy: {
+      summary:
+        "VANTA PERFORMANCE is a conceptual athletic performance studio experience designed by SS STUDIO to showcase how a high-performance training and recovery studio can present biomechanical principles, architectural spaces, and disciplined restorative protocols through an immersive digital experience.",
+      challenge: {
+        title: "The Athletic Experience Challenge",
+        description:
+          "Fitness and gym websites frequently suffer from aggressive discount timers, overcrowded schedule grids, and generic templates that obscure training discipline. Premium training facilities—combining elite compound strength, motor control kinematics, and dedicated contrast recovery—require a digital experience that reflects the same architectural focus, atmospheric weight, and craftsmanship present in their physical space.",
+        painPoints: [
+          "Overcrowded template layouts dominated by high-pressure sales timers and noisy popups",
+          "Generic schedule grids that fail to communicate the physiological depth of training disciplines",
+          "Neglect of recovery and restorative modalities as secondary afterthought offerings",
+          "Disjointed inquiry flows that treat prospective athletes as transactional leads rather than individual consultations",
+        ],
+        framing:
+          "Framed by SS STUDIO as an athletic digital architecture challenge: how to craft a restrained, obsidian-toned digital flagship that communicates physical intent, spatial stillness, and uncompromising training discipline.",
+      },
+      approach:
+        "Engineered an obsidian-framed athletic interface combining interactive discipline selectors, a 5-zone architectural space explorer, long-form editorial journal modal essays, and an individualized consultation pathway.",
+      businessContext: {
+        title: "Studio Concept & Athletic Context",
+        paragraphs: [
+          "VANTA PERFORMANCE is an independent conceptual digital experience created by SS STUDIO to explore how a modern athletic performance and recovery studio could translate its training philosophy, spatial environment, and restorative modalities into a disciplined digital experience.",
+          "Rather than relying on aggressive sales slogans, transformation before-and-afters, or generic template grids, the concept prioritizes biomechanical intent, structured training discovery, architectural spaces, and long-form editorial essays.",
+          "This project represents a complete design and frontend architecture demonstration created for the health, fitness, and athletic recovery domain.",
+        ],
+        verifiedFacts: [
+          "Conceptual digital experience designed for high-performance fitness & recovery studios",
+          "Four core training disciplines: Strength, Performance, Movement, Recovery",
+          "Five conceptual architectural studio zones: Main Arena, Free Weights, Sprint Corridor, Contrast Suite, Lounge",
+          "Three in-depth editorial research essays exploring biomechanics and autonomic down-regulation",
+          "Interactive consultation inquiry workflow with client-side field validation",
+        ],
+        sourceNote: "Source: Athletic performance studio research & physical sanctuary design architecture",
+        disclaimer:
+          "Note: This case study presents SS STUDIO's conceptual digital experience and interface architecture created for the athletic performance and recovery domain. Studio amenities, training methodologies, coach profiles, and research articles reflect conceptual design research.",
+      },
+      strategy: {
+        title: "Strategy & Information Architecture",
+        description:
+          "SS STUDIO structured the digital experience around progressive athletic disclosure—guiding visitors through studio philosophy, interactive training disciplines, architectural spaces, coaching rosters, contrast recovery, editorial essays, and personal consultations.",
+        pillars: [
+          {
+            title: "Intentional Discipline Breakdown",
+            description:
+              "Structured training into 4 distinct pillars (Strength, Performance, Movement, Recovery) with actionable biomechanical attributes and program highlights.",
+          },
+          {
+            title: "Architectural Spatial Mapping",
+            description:
+              "Allowed prospective members to explore 5 dedicated studio sectors and material textures before stepping into the physical facility.",
+          },
+          {
+            title: "Editorial Thought Leadership",
+            description:
+              "Integrated a long-form journal archive exploring force vectors, kinetic continuity, and autonomic down-regulation via an interactive full-screen reader.",
+          },
+          {
+            title: "Restorative Contrast Focus",
+            description:
+              "Elevated recovery into an essential training modality with dedicated hydrotherapy, infrared sauna, and breathwork protocol presentations.",
+          },
+          {
+            title: "Consultation-First Onboarding",
+            description:
+              "Streamlined member onboarding into a focused consultation inquiry workflow capturing specific athletic goals and movement history.",
+          },
+        ],
+      },
+      experienceDesign: {
+        title: "Experience & Athletic Visual Language",
+        description:
+          "The visual language pairs obsidian void canvases with raw bone typography, warm titanium accents, and hairline grid overlays to evoke the atmosphere of an elite, architecturally sound training sanctuary.",
+        designPrinciples: [
+          {
+            title: "Athletic Discipline",
+            description:
+              "High-contrast typography, strict layout geometry, and zero visual clutter communicate focused intent and physical mastery.",
+          },
+          {
+            title: "Tactile Spatial Restraint",
+            description:
+              "Deep obsidian surfaces and warm titanium accents mirror raw basalt flooring, acoustic dampening, and matte-black steel power stations.",
+          },
+          {
+            title: "Measured Micro-Motion",
+            description:
+              "Smooth GSAP scroll reveals and image scaling reinforce physical control and kinetic precision without distracting the reader.",
+          },
+        ],
+        image: "/assets/images/vanta/vanta_studio_architecture.jpg",
+        imageCaption:
+          "Representative architectural composition and lighting direction created for VANTA PERFORMANCE.",
+      },
+      productDiscovery: {
+        title: "Explore Training & Spatial Zones",
+        subtitle: "Interactive Discipline & Space Explorer",
+        description:
+          "The training and space discovery system allows visitors to explore the four core athletic disciplines and inspect the five dedicated architectural training zones.",
+        sequenceTitle: "Training & Space Discovery",
+        categoriesTitle: "CORE TRAINING DISCIPLINES & SPATIAL ZONES",
+        discoveryFlow: [
+          {
+            step: "01",
+            title: "Select Training Discipline",
+            description:
+              "Explore conceptual disciplines across Strength, Performance, Movement, or Recovery.",
+          },
+          {
+            step: "02",
+            title: "Inspect Program Attributes",
+            description:
+              "Review compound loading, energy system output, motor control, or thermal restoration protocols.",
+          },
+          {
+            step: "03",
+            title: "Explore Architectural Zones",
+            description:
+              "Examine the Main Arena, Free Weights, Sprint Corridor, Contrast Suite, or Members Lounge.",
+          },
+          {
+            step: "04",
+            title: "Initiate Athletic Consultation",
+            description:
+              "Seamlessly transition primary training interests into a structured personal consultation inquiry.",
+          },
+        ],
+        productCategories: [
+          {
+            name: "01 · Strength Discipline",
+            application: "Compound force generation, structural hypertrophy & bar-path neuromuscular efficiency",
+            image: "/assets/images/vanta/vanta_strength.jpg",
+          },
+          {
+            name: "02 · Performance Discipline",
+            application: "Energy system conditioning, athletic power & tri-phasic rate of force development",
+            image: "/assets/images/vanta/vanta_performance.jpg",
+          },
+          {
+            name: "03 · Movement Discipline",
+            application: "Joint workspace expansion, active mobility, and gymnastic ring spatial awareness",
+            image: "/assets/images/vanta/vanta_movement.jpg",
+          },
+          {
+            name: "04 · Recovery Sanctuary",
+            application: "Contrast hydrotherapy, dry infrared heat, and 4°C cold water immersion protocols",
+            image: "/assets/images/vanta/vanta_recovery.jpg",
+          },
+          {
+            name: "05 · Performance Space",
+            application: "5 dedicated architectural sectors engineered with acoustic-dampened basalt concrete",
+            image: "/assets/images/vanta/vanta_training_floor.jpg",
+          },
+        ],
+        disclaimer:
+          "Disclaimer: Training programs, spatial zones, and coach attributes are presented as conceptual digital design studies demonstrating portfolio information architecture.",
+      },
+      enquiryExperience: {
+        title: "Begin the Dialogue — Consultation Pathway",
+        subtitle: "Streamlined Athlete Onboarding Funnel",
+        eyebrow: "CONCEPTUAL CONSULTATION & INQUIRY WORKFLOW",
+        description:
+          "Designed as a bespoke athlete consultation pathway, the inquiry workflow captures prospective member background, primary training interests, and movement goals in a structured, validated format.",
+        badge: "DEMO CONSULTATION FLOW · FRONTEND IMPLEMENTATION",
+        features: [
+          "Interactive training interest selector (Strength, Performance, Movement, Recovery, General)",
+          "Structured fields for full name, validated email address, and movement background notes",
+          "Client-side validation with real-time error clearance and simulated async loading feedback",
+          "Interactive submission confirmation with formatted success screen (no live CRM connected in demo)",
+        ],
+        workflowSteps: [
+          {
+            step: "1",
+            title: "Select Training Interest",
+            description: "Choose primary athletic discipline or consultation focus area.",
+          },
+          {
+            step: "2",
+            title: "Detail Goals & Background",
+            description: "Specify training history, performance objectives, or recovery needs.",
+          },
+          {
+            step: "3",
+            title: "Consultation Dispatch",
+            description: "Structured enquiry routed to interactive frontend demo feedback loop.",
+          },
+        ],
+        disclaimer:
+          "Note: This consultation workflow is implemented as an interactive frontend demonstration. In production environments, inquiries connect to studio CRM, scheduling APIs, or trainer dispatch endpoints.",
+      },
+      engineering: {
+        title: "Frontend Engineering & Architecture",
+        description:
+          "VANTA PERFORMANCE is engineered on a modern React 19 and Vite 8 architecture designed for rapid rendering, fluid scroll choreography, and modular maintainability.",
+        stack: [
+          {
+            category: "Core Framework",
+            items: ["React 19", "TypeScript", "Vite 8 Build Engine"],
+          },
+          {
+            category: "Styling & Tokens",
+            items: ["Tailwind CSS 4", "Custom Titanium/Obsidian Tokens", "CSS Grid & Flexbox"],
+          },
+          {
+            category: "Motion & Choreography",
+            items: ["GSAP 3.15", "ScrollTrigger", "Lenis Smooth Scroll"],
+          },
+          {
+            category: "UI Primitives & A11y",
+            items: ["Accessible Headless Modals", "Lucide React", "Prefers-Reduced-Motion Fallbacks"],
+          },
+        ],
+        highlights: [
+          "Strict TypeScript typings across all disciplines, coach data models, space amenities, and journal articles",
+          "GPU-accelerated image scaling and translation reveals with full prefers-reduced-motion fallback",
+          "Zero layout shift design with fluid clamp typography and responsive aspect ratio containers",
+          "Full keyboard accessibility with ESC key listeners and body scroll-lock management for modals",
+        ],
+      },
+      visualSystem: {
+        title: "Design System & Visual Taxonomy",
+        typography: [
+          {
+            role: "Display Headings",
+            family: "Syne",
+            usage: "Monumental section titles, discipline names, and focal numbers",
+          },
+          {
+            role: "Technical Metadata",
+            family: "JetBrains Mono / Space Mono",
+            usage: "Discipline codes, square-meter specs, step badges, and stat markers",
+          },
+          {
+            role: "Editorial Body",
+            family: "Plus Jakarta Sans",
+            usage: "Narrative descriptions, philosophy essays, and form inputs",
+          },
+        ],
+        palette: [
+          {
+            name: "Obsidian Canvas",
+            hex: "#080808",
+            role: "Deep foundational background canvas",
+            bgClass: "bg-[#080808]",
+          },
+          {
+            name: "Dark Slate Surface",
+            hex: "#101014",
+            role: "Card and elevated container backgrounds",
+            bgClass: "bg-[#101014]",
+          },
+          {
+            name: "Warm Titanium",
+            hex: "#c5a880",
+            role: "Active discipline highlights, primary CTAs, and focus markers",
+            bgClass: "bg-[#c5a880]",
+          },
+          {
+            name: "Emerald Status",
+            hex: "#34d399",
+            role: "Live status indicators and verified milestones",
+            bgClass: "bg-emerald-400",
+          },
+          {
+            name: "Raw Bone Off-White",
+            hex: "#e4e2dd",
+            role: "High-contrast headings and primary narrative copy",
+            bgClass: "bg-[#e4e2dd]",
+          },
+        ],
+        principles: [
+          "1px hairline borders (rgba(255,255,255,0.08)) that evoke architectural precision",
+          "High-contrast monochrome palette with warm metallic titanium accents",
+          "Atmospheric dark mode tailored for premium athletic environments",
+        ],
+      },
+      responsive: {
+        title: "Multi-Device Athletic Presentation",
+        description:
+          "The digital experience adapts seamlessly across resolutions—maintaining athletic typography, image clarity, interactive explorers, and modal reading on mobile phones, tablets, and wide workstation monitors.",
+        breakpoints: [
+          {
+            device: "Workstation Displays (1440px+)",
+            resolution:
+              "Full 12-column split grids, side-by-side space explorers, and expansive 21:9 panoramas",
+            focus: "Immersive studio review and consultation workflows",
+          },
+          {
+            device: "Tablets & Laptops (768px – 1024px)",
+            resolution:
+              "2-column modular cards, stacked space previews, and adaptive touch targets",
+            focus: "Studio walk-throughs and coach profile inspection",
+          },
+          {
+            device: "Mobile Phones (360px – 430px)",
+            resolution:
+              "Single-column vertical flow, slide-out drawer navigation, and 48px touch controls",
+            focus: "Rapid on-the-go discipline check and consultation submission",
+          },
+        ],
+      },
+      deliverables: {
+        title: "Delivered Studio Experience",
+        summary:
+          "SS STUDIO engineered a complete digital flagship and discipline discovery platform tailored to high-performance fitness and athletic recovery.",
+        items: [
+          "Complete Athletic Performance Digital Flagship Architecture",
+          "Interactive 4-Discipline Training System with Dynamic Detail Spotlight",
+          "5-Zone Architectural Space Explorer with Specifications & Photography",
+          "4-Stage Systematic Athletic Progression Methodology (Assess, Build, Progress, Recover)",
+          "Coaching Collective Roster with Individual Philosophies & Focus Areas",
+          "Subterranean Recovery Sanctuary Presentation with 4 Contrast Protocols",
+          "Long-Form Editorial Journal with Full-Screen Interactive Article Modal Reader",
+          "Client-Side Validated Consultation Inquiry Funnel with Success Feedback",
+          "Accessible Headless Navigation Drawer, Focus Management & Scroll-Lock",
+        ],
+      },
+      theExperience:
+        "Visitors explore the four core athletic disciplines (Strength, Performance, Movement, Recovery), 5 architectural space zones, systematic 4-stage methodology, coach roster, and research essays with interactive modals.",
+      whatWeBuilt: [
+        "Atmospheric athletic hero gateway with discipline metadata strip and dual CTAs",
+        "Studio philosophy presentation with 5 core principles and 1:1 coaching intent callouts",
+        "Interactive 4-discipline training switcher with animated spotlight details",
+        "5-zone architectural space explorer with active photography and dimensions",
+        "4-stage progressive athletic methodology breakdown",
+        "Coaching collective roster with philosophies and focus areas",
+        "Subterranean recovery sanctuary presentation with 4 contrast protocols",
+        "3 deep editorial research essays with full-screen interactive article modal reader",
+        "Physical studio architecture section with 21:9 panorama and material feature cards",
+        "Client-side validated consultation inquiry form with success confirmation state",
+      ],
+      sections: [
+        {
+          number: "01",
+          title: "Hero & Studio Philosophy",
+          description:
+            "Cinematic entrance establishing physical intent, movement principles, and discipline metadata.",
+        },
+        {
+          number: "02",
+          title: "Training System & Space Explorer",
+          description:
+            "Interactive discipline spotlight across 4 pillars paired with 5 architectural studio zones.",
+        },
+        {
+          number: "03",
+          title: "Methodology & Coaching Collective",
+          description:
+            "4-stage progression framework and coach roster detailing athletic credentials and philosophies.",
+        },
+        {
+          number: "04",
+          title: "Recovery Sanctuary & Journal Archive",
+          description:
+            "Contrast thermal protocols, full-screen article modal reader, and consultation request workflow.",
+        },
+      ],
+      gallery: [
+        {
+          image: "/assets/images/vanta/vanta_studio_architecture.jpg",
+          title: "Monolithic Concrete Architecture & Lighting",
+          caption: "Representative visual created for VANTA PERFORMANCE.",
+        },
+        {
+          image: "/assets/images/vanta/vanta_training_floor.jpg",
+          title: "The Main Training Floor & Olympic Platforms",
+          caption: "Representative visual created for VANTA PERFORMANCE.",
+        },
+        {
+          image: "/assets/images/vanta/vanta_recovery_space.jpg",
+          title: "Subterranean Contrast Thermal Suite & Sauna",
+          caption: "Representative visual created for VANTA PERFORMANCE.",
+        },
+        {
+          image: "/assets/images/vanta/vanta_functional.jpg",
+          title: "30-Meter High-Traction Turf Corridor",
+          caption: "Representative visual created for VANTA PERFORMANCE.",
+        },
+        {
+          image: "/assets/images/vanta/vanta_lounge.jpg",
+          title: "Architectural Smoked Timber Members Lounge",
+          caption: "Representative visual created for VANTA PERFORMANCE.",
+        },
+        {
+          image: "/assets/images/vanta/vanta_coaching.jpg",
+          title: "Biomechanical Movement Review & 1:1 Coaching",
+          caption: "Representative visual created for VANTA PERFORMANCE.",
+        },
+      ],
+      result:
+        "Engineered an authoritative, high-performance digital presence showcasing athletic training discipline, architectural space design, and considered recovery storytelling.",
+    },
+  },
 ];
 
 export const SELECTED_PROJECTS = PROJECTS;
+
