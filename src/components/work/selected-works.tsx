@@ -1,5 +1,5 @@
-﻿import { useRef, useState, type FC } from "react";
-import { SELECTED_PROJECTS } from "./project-data";
+import { useRef, useState, type FC } from "react";
+import { SELECTED_PROJECTS } from "@/data/projects";
 import { ProjectCard } from "./project-card";
 import { ProjectProgress } from "./project-progress";
 import { useGSAPContext } from "@/hooks/use-gsap-context";
@@ -84,13 +84,16 @@ export const SelectedWorks: FC<SelectedWorksProps> = ({
           <div className="space-y-3">
             <div className="flex items-center gap-2 font-mono text-xs text-accent-cyan tracking-widest uppercase">
               <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan" aria-hidden="true" />
-              <span>03 &middot; SELECTED WORK</span>
+              <span>01 &middot; SELECTED WORK</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-[-0.035em] text-foreground font-display">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-[-0.035em] text-foreground font-display leading-[1.02]">
               DIGITAL EXPERIENCES
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-white/95 to-white/70">
+                BUILT ACROSS INDUSTRIES.
+              </span>
             </h2>
             <p className="text-sm sm:text-base text-muted-foreground max-w-2xl font-normal leading-relaxed">
-              Bespoke commercial web platforms and curated industry demos built for distinct commercial domains.
+              A selection of business websites, digital experiences and industry-focused concepts developed by SS STUDIO.
             </p>
           </div>
 

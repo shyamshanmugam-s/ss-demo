@@ -2,108 +2,79 @@ import { useRef, type FC } from "react";
 import { useGSAPContext } from "@/hooks/use-gsap-context";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { gsap } from "@/lib/gsap";
-import { ArrowRight, ArrowUpRight, CheckCircle2, Layers } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CheckCircle2, ShieldCheck, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-interface CapabilitiesSectionProps {
-  onOpenCommission: () => void;
+interface WhySSSectionProps {
+  onOpenCommission?: () => void;
 }
 
-interface ServicePillar {
-  id: string;
+interface PrincipleItem {
   number: string;
-  title: string;
-  category: string;
+  label: string;
   positioning: string;
-  focusAreas: string[];
-  typicalDeliverables: string;
+  supportingPoints: string[];
 }
 
-const SERVICES: ServicePillar[] = [
+const PRINCIPLES: PrincipleItem[] = [
   {
-    id: "strategy",
     number: "01",
-    title: "STRATEGY",
-    category: "FOUNDATION & DIRECTION",
+    label: "BUSINESS FIRST",
     positioning:
-      "We translate business goals into a clear digital direction before anything is designed or built.",
-    focusAreas: [
-      "Business & audience research",
-      "Digital positioning",
-      "Information architecture",
-      "Conversion strategy",
-      "User journeys",
-      "Content structure",
+      "We start with the business, audience and objective before deciding what the website should look like.",
+    supportingPoints: [
+      "Business context before interface",
+      "Audience before assumptions",
+      "Clear information architecture",
+      "Purposeful conversion paths",
     ],
-    typicalDeliverables:
-      "Research · Strategy · Site Architecture · Conversion Pathways · Content Direction",
   },
   {
-    id: "design",
     number: "02",
-    title: "DESIGN",
-    category: "IDENTITY & INTERFACE",
+    label: "BESPOKE BY DEFAULT",
     positioning:
-      "Distinctive digital identities and interfaces designed around the character of the business.",
-    focusAreas: [
-      "UI / UX design",
-      "Design systems",
-      "Art direction",
-      "Visual storytelling",
-      "Interaction design",
-      "Motion direction",
+      "Each experience is shaped around the identity, content and requirements of the business rather than forced into a generic template.",
+    supportingPoints: [
+      "Custom visual direction",
+      "Tailored component systems",
+      "Industry-specific content structure",
+      "Distinct interaction language",
     ],
-    typicalDeliverables:
-      "Interface Systems · Visual Direction · Responsive Layouts · Interaction Patterns · Motion Language",
   },
   {
-    id: "development",
     number: "03",
-    title: "DEVELOPMENT",
-    category: "ENGINEERING & PERFORMANCE",
+    label: "ENGINEERED TO LAST",
     positioning:
-      "High-performance websites and interactive experiences engineered for modern browsers and devices.",
-    focusAreas: [
-      "React / TypeScript",
-      "Responsive development",
-      "Performance engineering",
-      "Interactive experiences",
-      "3D / WebGL where appropriate",
-      "Technical SEO foundations",
+      "Design is backed by maintainable frontend architecture, responsive implementation and deliberate performance engineering.",
+    supportingPoints: [
+      "Component-based architecture",
+      "Responsive systems",
+      "Performance-conscious development",
+      "Maintainable implementation",
     ],
-    typicalDeliverables:
-      "Production-Ready Frontend · Responsive Systems · Performance-Focused Builds · Interactive Experiences · Scalable Architecture",
   },
   {
-    id: "ai-automation",
     number: "04",
-    title: "AI & AUTOMATION",
-    category: "INTELLIGENT SYSTEMS",
+    label: "INTELLIGENCE WHEN IT MATTERS",
     positioning:
-      "Intelligent digital systems that reduce repetitive work, improve discovery and connect business workflows.",
-    focusAreas: [
-      "AI-powered website experiences",
-      "Product / service finders",
-      "Lead qualification systems",
+      "AI and automation are introduced when they solve a real business or user problem — not simply because the technology exists.",
+    supportingPoints: [
+      "AI product experiences",
+      "Intelligent discovery",
+      "Lead qualification",
       "Workflow automation",
-      "AI assistants",
-      "Business integrations",
     ],
-    typicalDeliverables:
-      "AI Product Experiences · Lead Systems · Qualification Workflows · Automated Operations · Business Intelligence Interfaces · API / Workflow Integrations",
   },
 ];
 
-export const CapabilitiesSection: FC<CapabilitiesSectionProps> = ({
-  onOpenCommission,
-}) => {
+export const WhySSSection: FC<WhySSSectionProps> = ({ onOpenCommission }) => {
   const sectionRef = useRef<HTMLElement>(null);
   const prefersReducedMotion = useReducedMotion();
 
   useGSAPContext(() => {
     if (prefersReducedMotion) return;
 
-    gsap.from(".service-pillar-card", {
+    gsap.from(".why-ss-card", {
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "top 75%",
@@ -114,24 +85,46 @@ export const CapabilitiesSection: FC<CapabilitiesSectionProps> = ({
       stagger: 0.08,
       ease: "power3.out",
     });
+
+    gsap.from(".why-ss-micro", {
+      scrollTrigger: {
+        trigger: ".why-ss-micro",
+        start: "top 85%",
+      },
+      opacity: 0,
+      y: 16,
+      duration: 0.8,
+      ease: "power3.out",
+    });
   }, sectionRef, [prefersReducedMotion]);
 
-  const handleScrollToSystems = () => {
-    const systemsSection = document.querySelector("#systems");
-    if (systemsSection) {
-      systemsSection.scrollIntoView({ behavior: "smooth" });
+  const handleScrollToWork = () => {
+    const workSection = document.querySelector("#work");
+    if (workSection) {
+      workSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleAction = () => {
+    if (onOpenCommission) {
+      onOpenCommission();
+    } else {
+      const contactSection = document.querySelector("#contact");
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
   return (
     <section
       ref={sectionRef}
-      id="services"
+      id="why-ss"
       className="relative z-10 py-28 sm:py-36 px-4 sm:px-8 lg:px-12 bg-void text-foreground border-t border-white/[0.06]"
-      aria-label="Services and Core Capabilities"
+      aria-label="Why SS Studio - Working Principles & Craft"
     >
       {/* Anchor alias for compatibility */}
-      <span id="capabilities" className="sr-only" aria-hidden="true" />
+      <span id="about" className="sr-only" aria-hidden="true" />
 
       <div className="max-w-6xl mx-auto space-y-12 sm:space-y-16">
         {/* Section Header */}
@@ -139,23 +132,23 @@ export const CapabilitiesSection: FC<CapabilitiesSectionProps> = ({
           <div className="space-y-3">
             <div className="flex items-center gap-2 font-mono text-xs text-accent-cyan tracking-widest uppercase">
               <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan" aria-hidden="true" />
-              <span>03 &middot; SERVICES</span>
+              <span>06 &middot; WHY SS</span>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-[-0.035em] text-foreground font-display leading-[1.02]">
-              FROM STRATEGY
+              BUILT WITH
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-white/95 to-white/70">
-                TO SYSTEMS.
+                INTENT.
               </span>
             </h2>
             <p className="text-sm sm:text-base text-muted-foreground max-w-2xl font-normal leading-relaxed">
-              We combine business thinking, visual design and engineering to create digital experiences that are built to perform.
+              Every project starts with the business, not a template — then strategy, design and engineering are shaped around what the experience needs to achieve.
             </p>
           </div>
 
           <div className="hidden sm:flex items-center gap-3 shrink-0">
             <Button
               type="button"
-              onClick={onOpenCommission}
+              onClick={handleAction}
               variant="outline"
               size="sm"
               className="font-mono text-xs border-white/15 hover:border-accent-cyan/50 text-muted-foreground hover:text-foreground gap-1.5"
@@ -167,23 +160,23 @@ export const CapabilitiesSection: FC<CapabilitiesSectionProps> = ({
           </div>
         </div>
 
-        {/* Four Core Service Pillars Grid (2x2 Layout on Desktop) */}
+        {/* Four Positioning Principles: 2x2 Architectural Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-          {SERVICES.map((service) => (
+          {PRINCIPLES.map((principle) => (
             <article
-              key={service.id}
-              className="service-pillar-card group relative p-6 sm:p-8 lg:p-9 rounded-2xl sm:rounded-3xl bg-[#07090e]/95 border border-white/[0.08] hover:border-accent-cyan/40 hover:bg-[#0a0d14] transition-all duration-300 flex flex-col justify-between space-y-8 shadow-[0_15px_35px_rgba(0,0,0,0.6)]"
+              key={principle.number}
+              className="why-ss-card group relative p-6 sm:p-8 lg:p-9 rounded-2xl sm:rounded-3xl bg-[#07090e]/95 border border-white/[0.08] hover:border-accent-cyan/40 hover:bg-[#0a0d14] transition-all duration-300 flex flex-col justify-between space-y-7 shadow-[0_15px_35px_rgba(0,0,0,0.6)]"
             >
-              {/* Pillar Header */}
+              {/* Card Header */}
               <div className="space-y-4">
                 <div className="flex items-center justify-between pb-4 border-b border-white/[0.06]">
                   <div className="flex items-center gap-2.5 font-mono text-xs">
                     <span className="text-accent-cyan font-bold tracking-widest text-sm">
-                      {service.number}
+                      {principle.number}
                     </span>
                     <span className="text-white/20">&middot;</span>
-                    <span className="text-[10px] sm:text-[11px] tracking-wider text-muted-foreground/80 uppercase font-medium">
-                      {service.category}
+                    <span className="text-[10px] sm:text-[11px] font-mono tracking-wider text-muted-foreground uppercase font-medium">
+                      WORKING PRINCIPLE
                     </span>
                   </div>
 
@@ -192,70 +185,80 @@ export const CapabilitiesSection: FC<CapabilitiesSectionProps> = ({
 
                 <div className="space-y-2">
                   <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight font-display text-foreground group-hover:text-accent-cyan transition-colors">
-                    {service.title}
+                    {principle.label}
                   </h3>
                   <p className="text-sm sm:text-base text-foreground/90 leading-relaxed font-normal">
-                    {service.positioning}
+                    {principle.positioning}
                   </p>
                 </div>
               </div>
 
-              {/* Focus Areas Checklist */}
+              {/* Supporting Points Sub-Grid */}
               <div className="space-y-3 pt-2">
                 <div className="text-[10px] font-mono tracking-widest text-accent-cyan uppercase font-bold flex items-center gap-1.5">
-                  <Layers className="w-3 h-3 text-accent-cyan" />
-                  <span>CORE FOCUS AREAS</span>
+                  <Sparkles className="w-3 h-3 text-accent-cyan" />
+                  <span>KEY PRINCIPLE FOCUS</span>
                 </div>
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {service.focusAreas.map((area, idx) => (
+                  {principle.supportingPoints.map((point, idx) => (
                     <div
                       key={idx}
                       className="p-3 rounded-lg bg-surface-elevated/40 border border-white/[0.05] flex items-start gap-2.5"
                     >
                       <CheckCircle2 className="w-3.5 h-3.5 text-accent-cyan/80 shrink-0 mt-0.5" />
                       <span className="text-xs font-mono text-muted-foreground leading-snug">
-                        {area}
+                        {point}
                       </span>
                     </div>
                   ))}
-                </div>
-              </div>
-
-              {/* Typical Deliverables Footnote */}
-              <div className="pt-4 border-t border-white/[0.06] space-y-1.5">
-                <div className="text-[10px] font-mono tracking-widest text-muted-foreground/60 uppercase">
-                  TYPICAL DELIVERABLES
-                </div>
-                <div className="font-mono text-xs text-muted-foreground leading-relaxed">
-                  {service.typicalDeliverables}
                 </div>
               </div>
             </article>
           ))}
         </div>
 
+        {/* Restrained Micro Principle Banner */}
+        <div className="why-ss-micro rounded-xl sm:rounded-2xl border border-white/[0.08] bg-[#07090e]/90 p-5 sm:p-7 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+          <div className="flex items-center gap-3">
+            <ShieldCheck className="w-5 h-5 text-accent-cyan shrink-0 hidden sm:block" />
+            <div className="space-y-0.5">
+              <div className="text-[11px] sm:text-xs font-mono font-bold tracking-[0.14em] uppercase text-foreground">
+                NO TEMPLATES &middot; NO UNNECESSARY COMPLEXITY
+              </div>
+              <div className="text-[10px] sm:text-[11px] font-mono text-muted-foreground">
+                Just the right system for the business.
+              </div>
+            </div>
+          </div>
+
+          <div className="text-[10px] font-mono tracking-widest text-muted-foreground/60 uppercase">
+            SS STUDIO &middot; METHODOLOGY STANDARDS
+          </div>
+        </div>
+
         {/* Section Bottom CTAs */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-8 border-t border-white/[0.07]">
           <div className="text-xs font-mono text-muted-foreground">
-            SS STUDIO &middot; STRATEGY &middot; DESIGN &middot; DEVELOPMENT &middot; AI
+            SS STUDIO &middot; BUSINESS FIRST &middot; BESPOKE ARCHITECTURE
           </div>
 
           <div className="flex flex-wrap items-center gap-4">
             <Button
               type="button"
-              onClick={handleScrollToSystems}
+              onClick={handleScrollToWork}
               variant="outline"
               size="default"
               className="font-mono text-xs tracking-wider border-white/15 hover:border-accent-cyan/40 text-muted-foreground hover:text-foreground gap-2 w-full sm:w-auto justify-center"
               data-cursor="EXPLORE"
             >
-              <span>EXPLORE DIGITAL SYSTEMS</span>
+              <span>VIEW SELECTED WORK</span>
               <ArrowRight className="w-3.5 h-3.5 text-accent-cyan" />
             </Button>
 
             <Button
               type="button"
-              onClick={onOpenCommission}
+              onClick={handleAction}
               variant="default"
               size="default"
               className="font-mono text-xs tracking-wider bg-accent-cyan hover:bg-accent-cyan/90 text-void font-bold gap-2 w-full sm:w-auto justify-center"
@@ -270,5 +273,3 @@ export const CapabilitiesSection: FC<CapabilitiesSectionProps> = ({
     </section>
   );
 };
-
-export const ServicesSection = CapabilitiesSection;

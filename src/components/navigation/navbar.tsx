@@ -32,10 +32,20 @@ export const Navbar: FC<NavbarProps> = ({ onOpenCommission }) => {
     return cleanup;
   }, [prefersReducedMotion]);
 
-  // Lock body scroll when mobile menu is open
+  // Lock body scroll and listen for Escape when mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = "hidden";
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+          setMobileMenuOpen(false);
+        }
+      };
+      window.addEventListener("keydown", handleKeyDown);
+      return () => {
+        document.body.style.overflow = "";
+        window.removeEventListener("keydown", handleKeyDown);
+      };
     } else {
       document.body.style.overflow = "";
     }
@@ -43,12 +53,11 @@ export const Navbar: FC<NavbarProps> = ({ onOpenCommission }) => {
 
   const navLinks = [
     { label: "WORK", href: "#work" },
-    { label: "ABOUT", href: "#about" },
-    { label: "CAPABILITIES", href: "#capabilities" },
-    { label: "EXPERTISE", href: "#expertise" },
+    { label: "INDUSTRIES", href: "#industries" },
+    { label: "SERVICES", href: "#services" },
     { label: "SYSTEMS", href: "#systems" },
     { label: "PROCESS", href: "#process" },
-    { label: "BACKGROUND", href: "#background" },
+    { label: "WHY SS", href: "#why-ss" },
     { label: "CONTACT", href: "#contact" },
   ];
 
@@ -81,7 +90,7 @@ export const Navbar: FC<NavbarProps> = ({ onOpenCommission }) => {
           <a
             href="#"
             className="flex items-center gap-2.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-cyan rounded-md"
-            aria-label="SS STUDIO Homepage"
+            aria-label="SS STUDIO - Digital Studio"
           >
             <span className="w-7 h-7 rounded-lg bg-surface-elevated border border-white/15 flex items-center justify-center font-black text-xs tracking-tighter text-foreground group-hover:border-accent-cyan/50 group-hover:text-accent-cyan transition-colors">
               SS
@@ -91,7 +100,7 @@ export const Navbar: FC<NavbarProps> = ({ onOpenCommission }) => {
                 SS STUDIO
               </span>
               <span className="hidden sm:inline font-mono text-[9px] tracking-widest text-muted-foreground">
-                SHYAM SHANMUGAM
+                DIGITAL STUDIO
               </span>
             </div>
           </a>

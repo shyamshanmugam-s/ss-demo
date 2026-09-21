@@ -1,0 +1,24 @@
+# SS STUDIO
+
+> SS STUDIO designs and builds premium websites, digital experiences and AI-powered systems for modern businesses.
+
+## Overview
+SS STUDIO is a specialized digital studio combining business strategy, bespoke visual design, high-performance React/TypeScript engineering, and intelligent workflow automation.
+
+## Core Capabilities
+- **Strategy & Direction**: Business research, digital positioning, information architecture, conversion strategy.
+- **Design & Interfaces**: Bespoke UI/UX, design systems, art direction, interaction design, motion systems.
+- **Engineering & Performance**: React, TypeScript, Vite, GSAP, Three.js WebGL, responsive multi-device architecture.
+- **AI & Business Systems**: AI product experiences, guided product selectors, lead qualification funnels, workflow automation.
+
+## Portfolio & Case Studies
+- [Forge Flow (Manufacturing Industry Demo)](https://ss-studio.vercel.app/work/forge-flow): Precision manufacturing digital platform and interactive guided pump selection engine.
+- [Atelier Forma (Interior & Architecture Concept)](https://ss-studio.vercel.app/work/atelier-forma): Architectural monograph and spatial design portfolio.
+- [Ember & Grain (Café & Specialty Coffee Concept)](https://ss-studio.vercel.app/work/ember-grain): Specialty coffee roastery and atmospheric culinary experience.
+- [Lume (Fine Dining Concept)](https://ss-studio.vercel.app/work/lume): Contemporary fine dining and tasting progression experience.
+- [Axis Structures (Construction & Civil Engineering Concept)](https://ss-studio.vercel.app/work/axis-structures): Structural engineering and civil infrastructure platform.
+- [Verra Residences (Real Estate Concept)](https://ss-studio.vercel.app/work/verra-residences): Luxury residential property launch monograph.
+
+## Primary Contact
+- **Website**: https://ss-studio.vercel.app/
+- **Inquiries**: Project Commission Modal on website

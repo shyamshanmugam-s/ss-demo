@@ -12,12 +12,11 @@ export const Footer: FC<FooterProps> = ({ onOpenCommission: _onOpenCommission })
 
   const navLinks = [
     { label: "WORK", href: "#work" },
-    { label: "ABOUT", href: "#about" },
-    { label: "CAPABILITIES", href: "#capabilities" },
-    { label: "EXPERTISE", href: "#expertise" },
+    { label: "INDUSTRIES", href: "#industries" },
+    { label: "SERVICES", href: "#services" },
     { label: "SYSTEMS", href: "#systems" },
     { label: "PROCESS", href: "#process" },
-    { label: "BACKGROUND", href: "#background" },
+    { label: "WHY SS", href: "#why-ss" },
     { label: "CONTACT", href: "#contact" },
   ];
 
@@ -40,7 +39,7 @@ export const Footer: FC<FooterProps> = ({ onOpenCommission: _onOpenCommission })
               </span>
             </div>
             <div className="text-xs font-mono text-muted-foreground">
-              SHYAM SHANMUGAM &middot; CREATIVE DEVELOPER &middot; DIGITAL EXPERIENCES
+              DIGITAL FLAGSHIPS &middot; WEB ARCHITECTURE &middot; AI SYSTEMS
             </div>
           </div>
 

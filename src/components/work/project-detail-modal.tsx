@@ -1,5 +1,5 @@
 import { type FC } from "react";
-import { type Project } from "@/types";
+import { type Project, type ProjectStatus, type ProjectType } from "@/types";
 import {
   Dialog,
   DialogContent,
@@ -13,6 +13,9 @@ import {
   CheckCircle2,
   ArrowUpRight,
   ShieldCheck,
+  Layers,
+  Wrench,
+  Info,
 } from "lucide-react";
 
 interface ProjectDetailModalProps {
@@ -21,6 +24,42 @@ interface ProjectDetailModalProps {
   onOpenChange: (open: boolean) => void;
   onStartProject?: () => void;
 }
+
+const formatTypeStatusBadge = (type: ProjectType, status: ProjectStatus) => {
+  if (type === "INDUSTRY DEMO" && status === "DEMO") {
+    return {
+      label: "INDUSTRY DEMO · DEMO",
+      style: "bg-amber-950/50 border-amber-500/30 text-amber-300",
+      dot: "bg-amber-400",
+    };
+  }
+  if (type === "CONCEPT" && status === "LIVE") {
+    return {
+      label: "CONCEPT · LIVE",
+      style: "bg-emerald-950/50 border-emerald-500/30 text-emerald-400",
+      dot: "bg-emerald-400 animate-pulse",
+    };
+  }
+  if (type === "CLIENT PROJECT" && status === "LIVE") {
+    return {
+      label: "CLIENT · LIVE",
+      style: "bg-blue-950/50 border-blue-500/30 text-blue-300",
+      dot: "bg-blue-400",
+    };
+  }
+  if (status === "IN DEVELOPMENT") {
+    return {
+      label: "IN DEVELOPMENT",
+      style: "bg-zinc-900/60 border-zinc-700/40 text-zinc-300",
+      dot: "bg-zinc-400",
+    };
+  }
+  return {
+    label: `${type} · ${status}`,
+    style: "bg-cyan-950/50 border-cyan-500/30 text-accent-cyan",
+    dot: "bg-accent-cyan",
+  };
+};
 
 export const ProjectDetailModal: FC<ProjectDetailModalProps> = ({
   project,
@@ -31,6 +70,21 @@ export const ProjectDetailModal: FC<ProjectDetailModalProps> = ({
   if (!project) return null;
 
   const caseStudy = project.caseStudy;
+  const typeStatus = formatTypeStatusBadge(project.type, project.status);
+  const heroImageSrc = project.heroImage || project.thumbnail || project.image;
+  const servicesList = project.services || [];
+  const techList = project.technology || project.technologies || [];
+
+  const rawGallery = project.gallery && project.gallery.length > 0 
+    ? project.gallery 
+    : caseStudy?.gallery || [];
+
+  const galleryItems = rawGallery.map((item) => {
+    if (typeof item === "string") {
+      return { image: item, title: project.title, caption: project.industry };
+    }
+    return item;
+  });
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -38,26 +92,28 @@ export const ProjectDetailModal: FC<ProjectDetailModalProps> = ({
         <DialogHeader className="space-y-4 pb-6 border-b border-white/[0.08]">
           {/* Top Status & Category Badge */}
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
+              {/* Type & Status Combined Badge */}
               <span
-                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono border ${
-                  project.tag === "LIVE"
-                    ? "bg-emerald-950/60 border-emerald-500/30 text-emerald-400"
-                    : "bg-cyan-950/60 border-cyan-500/30 text-accent-cyan"
-                }`}
+                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono border ${typeStatus.style}`}
               >
                 <span
-                  className={`w-1.5 h-1.5 rounded-full ${
-                    project.tag === "LIVE" ? "bg-emerald-400 animate-pulse" : "bg-accent-cyan"
-                  }`}
+                  className={`w-1.5 h-1.5 rounded-full ${typeStatus.dot}`}
                   aria-hidden="true"
                 />
-                <span className="font-semibold">{project.tag}</span>
+                <span className="font-semibold">{typeStatus.label}</span>
               </span>
 
-              <span className="text-xs font-mono text-muted-foreground px-2 py-0.5 rounded bg-white/5 border border-white/10">
+              {/* Industry / SubIndustry */}
+              <span className="text-xs font-mono text-muted-foreground px-2.5 py-1 rounded bg-white/5 border border-white/10">
                 {project.industry}
               </span>
+
+              {project.subIndustry && (
+                <span className="text-xs font-mono text-muted-foreground/80 hidden sm:inline px-2.5 py-1 rounded bg-white/[0.03] border border-white/[0.06]">
+                  {project.subIndustry}
+                </span>
+              )}
             </div>
 
             <div className="text-xs font-mono text-muted-foreground">
@@ -70,7 +126,7 @@ export const ProjectDetailModal: FC<ProjectDetailModalProps> = ({
           </DialogTitle>
 
           <DialogDescription className="text-sm sm:text-base font-mono text-accent-cyan/90">
-            {project.category}
+            {project.subIndustry || project.category || project.industry}
           </DialogDescription>
         </DialogHeader>
 
@@ -79,20 +135,41 @@ export const ProjectDetailModal: FC<ProjectDetailModalProps> = ({
           {/* 1. Hero Image */}
           <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden border border-white/10 bg-[#050608]">
             <img
-              src={project.heroImage || project.image}
+              src={heroImageSrc}
               alt={project.title}
               className="w-full h-full object-cover object-center"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#07090e]/80 via-transparent to-transparent pointer-events-none" />
           </div>
 
-          {/* 2. Overview */}
+          {/* Context Advisory for Concepts / Demos */}
+          {project.type === "CONCEPT" && (
+            <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.07] flex items-start gap-3">
+              <Info className="w-4 h-4 text-accent-cyan shrink-0 mt-0.5" />
+              <div className="text-xs font-mono text-muted-foreground leading-relaxed">
+                <span className="text-foreground font-semibold">Concept Flagship: </span>
+                This project was conceived, designed, and engineered by SS STUDIO as an editorial exploration of digital architecture and interaction design for the {project.industry} sector.
+              </div>
+            </div>
+          )}
+
+          {project.type === "INDUSTRY DEMO" && (
+            <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.07] flex items-start gap-3">
+              <Info className="w-4 h-4 text-amber-300 shrink-0 mt-0.5" />
+              <div className="text-xs font-mono text-muted-foreground leading-relaxed">
+                <span className="text-foreground font-semibold">Industry Demonstration: </span>
+                This project was created by SS STUDIO to demonstrate structured industrial information architecture, interactive product finders, and commercial RFQ workflows.
+              </div>
+            </div>
+          )}
+
+          {/* 2. Overview / Summary */}
           <div className="space-y-2">
             <div className="text-[10px] font-mono tracking-widest text-accent-cyan uppercase font-bold">
-              01 &middot; OVERVIEW
+              01 &middot; PROJECT SUMMARY
             </div>
             <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-              {project.description}
+              {project.description || project.shortDescription}
             </p>
             {caseStudy?.summary && (
               <p className="text-xs sm:text-sm text-foreground/80 leading-relaxed font-mono pt-1">
@@ -110,7 +187,9 @@ export const ProjectDetailModal: FC<ProjectDetailModalProps> = ({
                     02 &middot; THE CHALLENGE
                   </div>
                   <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                    {caseStudy.challenge}
+                    {typeof caseStudy.challenge === "object"
+                      ? caseStudy.challenge.description
+                      : caseStudy.challenge}
                   </p>
                 </div>
               )}
@@ -127,11 +206,34 @@ export const ProjectDetailModal: FC<ProjectDetailModalProps> = ({
             </div>
           )}
 
-          {/* 4. Delivered Systems / Features */}
+          {/* 4. Services Delivered */}
+          {servicesList.length > 0 && (
+            <div className="space-y-3">
+              <div className="flex items-center gap-2 text-[10px] font-mono tracking-widest text-accent-cyan uppercase font-bold">
+                <Layers className="w-3.5 h-3.5 text-accent-cyan" />
+                <span>04 &middot; SERVICES &amp; DELIVERABLES</span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                {servicesList.map((service, idx) => (
+                  <div
+                    key={idx}
+                    className="p-3.5 rounded-lg bg-surface-elevated/40 border border-white/[0.06] flex items-start gap-2.5"
+                  >
+                    <CheckCircle2 className="w-4 h-4 text-accent-cyan shrink-0 mt-0.5" />
+                    <span className="text-xs font-mono text-foreground/90 leading-snug">
+                      {service}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* 5. Delivered Architecture / Features */}
           {caseStudy?.whatWeBuilt && caseStudy.whatWeBuilt.length > 0 && (
             <div className="space-y-3">
               <div className="text-[10px] font-mono tracking-widest text-accent-cyan uppercase font-bold">
-                04 &middot; DELIVERED ARCHITECTURE
+                05 &middot; DELIVERED ARCHITECTURE
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {caseStudy.whatWeBuilt.map((item, idx) => (
@@ -139,7 +241,7 @@ export const ProjectDetailModal: FC<ProjectDetailModalProps> = ({
                     key={idx}
                     className="p-3.5 rounded-lg bg-surface-elevated/40 border border-white/[0.06] flex items-start gap-2.5"
                   >
-                    <CheckCircle2 className="w-4 h-4 text-accent-cyan shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                     <span className="text-xs font-mono text-muted-foreground leading-snug">
                       {item}
                     </span>
@@ -149,11 +251,11 @@ export const ProjectDetailModal: FC<ProjectDetailModalProps> = ({
             </div>
           )}
 
-          {/* 5. Project Sections */}
+          {/* 6. Key System Modules */}
           {caseStudy?.sections && caseStudy.sections.length > 0 && (
             <div className="space-y-3">
               <div className="text-[10px] font-mono tracking-widest text-accent-cyan uppercase font-bold">
-                05 &middot; KEY SYSTEM MODULES
+                06 &middot; KEY SYSTEM MODULES
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {caseStudy.sections.map((sec) => (
@@ -174,31 +276,34 @@ export const ProjectDetailModal: FC<ProjectDetailModalProps> = ({
             </div>
           )}
 
-          {/* 6. Technology Stack */}
-          <div className="space-y-3">
-            <div className="text-[10px] font-mono tracking-widest text-accent-cyan uppercase font-bold">
-              06 &middot; TECHNOLOGY ECOSYSTEM
+          {/* 7. Technology Stack */}
+          {techList.length > 0 && (
+            <div className="space-y-3">
+              <div className="flex items-center gap-2 text-[10px] font-mono tracking-widest text-accent-cyan uppercase font-bold">
+                <Wrench className="w-3.5 h-3.5 text-accent-cyan" />
+                <span>07 &middot; TECHNOLOGY ECOSYSTEM</span>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {techList.map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-3 py-1.5 rounded-lg bg-[#10141f] border border-white/[0.08] text-xs font-mono text-accent-cyan/90 font-medium"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
             </div>
-            <div className="flex flex-wrap gap-2">
-              {project.technologies.map((tech) => (
-                <span
-                  key={tech}
-                  className="px-3 py-1.5 rounded-lg bg-[#10141f] border border-white/[0.08] text-xs font-mono text-accent-cyan/90 font-medium"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
+          )}
 
-          {/* 7. Visual Gallery */}
-          {caseStudy?.gallery && caseStudy.gallery.length > 0 && (
+          {/* 8. Visual Gallery */}
+          {galleryItems.length > 0 && (
             <div className="space-y-3 pt-2">
               <div className="text-[10px] font-mono tracking-widest text-accent-cyan uppercase font-bold">
-                07 &middot; VISUAL DOSSIER
+                08 &middot; VISUAL GALLERY
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {caseStudy.gallery.map((item, idx) => (
+                {galleryItems.map((item, idx) => (
                   <div
                     key={idx}
                     className="group relative rounded-xl overflow-hidden border border-white/[0.08] bg-[#050608] space-y-2 p-2 bg-surface-elevated/30"
@@ -225,13 +330,13 @@ export const ProjectDetailModal: FC<ProjectDetailModalProps> = ({
             </div>
           )}
 
-          {/* 8. Result / Deliverable */}
+          {/* 9. Delivered Result */}
           {caseStudy?.result && (
             <div className="p-5 rounded-xl bg-surface-elevated/60 border border-white/[0.08] flex items-start gap-3">
               <ShieldCheck className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
               <div className="space-y-1">
                 <div className="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">
-                  DELIVERED RESULT
+                  ARCHITECTURAL DELIVERABLE
                 </div>
                 <p className="text-xs sm:text-sm text-foreground/90 leading-relaxed">
                   {caseStudy.result}
@@ -240,7 +345,7 @@ export const ProjectDetailModal: FC<ProjectDetailModalProps> = ({
             </div>
           )}
 
-          {/* 9. Action Footer */}
+          {/* 10. Action Footer */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-8 border-t border-white/[0.08]">
             {project.liveUrl ? (
               <a
@@ -254,7 +359,7 @@ export const ProjectDetailModal: FC<ProjectDetailModalProps> = ({
               </a>
             ) : (
               <div className="text-xs font-mono text-muted-foreground/70">
-                Official SS Studio Case Study Dossier
+                Official SS STUDIO Project Dossier
               </div>
             )}
 

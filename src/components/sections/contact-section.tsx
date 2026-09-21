@@ -1,4 +1,4 @@
-﻿import { useRef, useEffect, type FC } from "react";
+import { useRef, useEffect, type FC } from "react";
 import { useGSAPContext } from "@/hooks/use-gsap-context";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { gsap } from "@/lib/gsap";
@@ -75,7 +75,7 @@ export const ContactSection: FC<ContactSectionProps> = ({ onOpenCommission }) =>
 
         {/* Narrative */}
         <p className="contact-reveal text-sm sm:text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
-          I design and build distinctive websites and digital experiences for businesses that want to stand apart.
+          We design and build distinctive websites and digital experiences for businesses that want to stand apart.
         </p>
 
         {/* Action CTAs */}

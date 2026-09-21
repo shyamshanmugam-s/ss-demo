@@ -3,31 +3,39 @@ import { Navbar } from "./components/navigation/navbar";
 import { HeroGateway } from "./components/hero/hero-gateway";
 import { SelectedWorks } from "./components/work/selected-works";
 import {
-  AboutSection,
-  CapabilitiesSection,
+  IndustriesSection,
+  ServicesSection,
   SystemsSection,
   ProcessSection,
-  BackgroundSection,
+  WhySSSection,
   ContactSection,
 } from "./components/sections";
-import { Marquee } from "./components/ui/marquee";
-import { DigitalLab } from "./components/lab/digital-lab";
 import { Footer } from "./components/navigation/footer";
 import { ProjectDetailModal } from "./components/work/project-detail-modal";
 import { CommissionModal } from "./components/commission/commission-modal";
+import { CaseStudyPage } from "./components/case-study";
 import { CustomCursor } from "./components/ui/custom-cursor";
 import { LoadingScreen } from "./components/ui/loading-screen";
 import { LenisProvider } from "./animations/lenis-provider";
+import { useRouter } from "./lib/router";
 import { type Project } from "./types";
 
 export function App() {
   const [loadingComplete, setLoadingComplete] = useState(false);
   const [commissionOpen, setCommissionOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const { isCaseStudy, slug, navigate } = useRouter();
 
   const handleLoadingComplete = useCallback(() => {
     setLoadingComplete(true);
   }, []);
+
+  const handleSelectProject = useCallback(
+    (project: Project) => {
+      navigate(`/work/${project.slug}`);
+    },
+    [navigate]
+  );
 
   return (
     <LenisProvider>
@@ -40,30 +48,39 @@ export function App() {
         {/* Desktop Contextual Custom Cursor */}
         <CustomCursor />
 
-        {/* Minimal Sticky Architectural Header */}
-        <Navbar onOpenCommission={() => setCommissionOpen(true)} />
-
-        {/* Main Experience Flow */}
-        <main id="main-content">
-          <HeroGateway onOpenCommission={() => setCommissionOpen(true)} />
-          <AboutSection />
-          <CapabilitiesSection onOpenCommission={() => setCommissionOpen(true)} />
-          <SelectedWorks
+        {/* Conditional Route: Case Study Page vs Homepage */}
+        {isCaseStudy && slug ? (
+          <CaseStudyPage
+            slug={slug}
+            onNavigate={navigate}
             onOpenCommission={() => setCommissionOpen(true)}
-            onSelectProject={(project) => setSelectedProject(project)}
           />
-          <Marquee />
-          <DigitalLab onOpenCommission={() => setCommissionOpen(true)} />
-          <SystemsSection onOpenCommission={() => setCommissionOpen(true)} />
-          <ProcessSection onOpenCommission={() => setCommissionOpen(true)} />
-          <BackgroundSection />
-          <ContactSection onOpenCommission={() => setCommissionOpen(true)} />
-        </main>
+        ) : (
+          <>
+            {/* Minimal Sticky Architectural Header */}
+            <Navbar onOpenCommission={() => setCommissionOpen(true)} />
 
-        {/* Minimal Studio Footer */}
-        <Footer onOpenCommission={() => setCommissionOpen(true)} />
+            {/* Main Experience Flow */}
+            <main id="main-content">
+              <HeroGateway onOpenCommission={() => setCommissionOpen(true)} />
+              <SelectedWorks
+                onOpenCommission={() => setCommissionOpen(true)}
+                onSelectProject={handleSelectProject}
+              />
+              <IndustriesSection onOpenCommission={() => setCommissionOpen(true)} />
+              <ServicesSection onOpenCommission={() => setCommissionOpen(true)} />
+              <SystemsSection onOpenCommission={() => setCommissionOpen(true)} />
+              <ProcessSection onOpenCommission={() => setCommissionOpen(true)} />
+              <WhySSSection onOpenCommission={() => setCommissionOpen(true)} />
+              <ContactSection onOpenCommission={() => setCommissionOpen(true)} />
+            </main>
 
-        {/* In-Depth Case Study Modal */}
+            {/* Minimal Studio Footer */}
+            <Footer onOpenCommission={() => setCommissionOpen(true)} />
+          </>
+        )}
+
+        {/* Quick Dossier Modal (Kept for compatibility) */}
         <ProjectDetailModal
           project={selectedProject}
           open={!!selectedProject}
