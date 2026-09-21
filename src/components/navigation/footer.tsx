@@ -1,4 +1,4 @@
-﻿import { type FC } from "react";
+import { type FC } from "react";
 import { ArrowUp } from "lucide-react";
 
 interface FooterProps {
@@ -15,6 +15,7 @@ export const Footer: FC<FooterProps> = ({ onOpenCommission: _onOpenCommission })
     { label: "ABOUT", href: "#about" },
     { label: "CAPABILITIES", href: "#capabilities" },
     { label: "EXPERTISE", href: "#expertise" },
+    { label: "SYSTEMS", href: "#systems" },
     { label: "PROCESS", href: "#process" },
     { label: "BACKGROUND", href: "#background" },
     { label: "CONTACT", href: "#contact" },

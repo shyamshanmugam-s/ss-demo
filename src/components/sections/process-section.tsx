@@ -1,4 +1,4 @@
-﻿import { useRef, type FC } from "react";
+import { useRef, type FC } from "react";
 import { useGSAPContext } from "@/hooks/use-gsap-context";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { gsap } from "@/lib/gsap";
@@ -126,7 +126,7 @@ export const ProcessSection: FC<ProcessSectionProps> = ({
           <div className="space-y-3">
             <div className="flex items-center gap-2 font-mono text-xs text-accent-cyan tracking-widest uppercase">
               <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan" aria-hidden="true" />
-              <span>05 &middot; PROCESS</span>
+              <span>06 &middot; PROCESS</span>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-[-0.035em] text-foreground font-display">
               HOW I BUILD

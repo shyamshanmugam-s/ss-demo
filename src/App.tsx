@@ -1,10 +1,11 @@
-﻿import { useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { Navbar } from "./components/navigation/navbar";
 import { HeroGateway } from "./components/hero/hero-gateway";
 import { SelectedWorks } from "./components/work/selected-works";
 import {
   AboutSection,
   CapabilitiesSection,
+  SystemsSection,
   ProcessSection,
   BackgroundSection,
   ContactSection,
@@ -53,6 +54,7 @@ export function App() {
           />
           <Marquee />
           <DigitalLab onOpenCommission={() => setCommissionOpen(true)} />
+          <SystemsSection onOpenCommission={() => setCommissionOpen(true)} />
           <ProcessSection onOpenCommission={() => setCommissionOpen(true)} />
           <BackgroundSection />
           <ContactSection onOpenCommission={() => setCommissionOpen(true)} />

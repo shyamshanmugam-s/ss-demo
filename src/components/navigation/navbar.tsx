@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useRef, type FC } from "react";
+import { useState, useEffect, useRef, type FC } from "react";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { attachMagneticPhysics } from "@/animations/motion-primitives";
 import { Button } from "@/components/ui/button";
@@ -46,6 +46,7 @@ export const Navbar: FC<NavbarProps> = ({ onOpenCommission }) => {
     { label: "ABOUT", href: "#about" },
     { label: "CAPABILITIES", href: "#capabilities" },
     { label: "EXPERTISE", href: "#expertise" },
+    { label: "SYSTEMS", href: "#systems" },
     { label: "PROCESS", href: "#process" },
     { label: "BACKGROUND", href: "#background" },
     { label: "CONTACT", href: "#contact" },

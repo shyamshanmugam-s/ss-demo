@@ -1,4 +1,4 @@
-﻿import { useRef, useState, type FC } from "react";
+import { useRef, type FC } from "react";
 import { useGSAPContext } from "@/hooks/use-gsap-context";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { gsap } from "@/lib/gsap";
@@ -19,96 +19,96 @@ interface CapabilityItem {
   techFocus: string;
 }
 
-const CAPABILITY_ROWS: CapabilityItem[] = [
+const CAPABILITIES: CapabilityItem[] = [
   {
-    id: "website-design",
+    id: "websites",
     number: "01",
-    title: "WEBSITE DESIGN",
-    category: "EDITORIAL & SPATIAL SYSTEMS",
+    title: "WEBSITES",
+    category: "DIGITAL PRESENCE & BRAND",
     description:
-      "Bespoke visual identity and art direction for modern businesses. Translating complex commercial offerings into clear typographic hierarchy, generous whitespace, and memorable digital impressions.",
+      "Premium marketing websites, portfolios, landing pages and digital experiences.",
     deliverables: [
-      "Art Direction & Design Systems",
-      "Typography & Layout Hierarchy",
-      "Responsive Spatial Layouts",
-      "Interactive Wireframing & Prototyping",
-    ],
-    techFocus: "Figma · Design Systems · Spatial Composition",
-  },
-  {
-    id: "frontend-development",
-    number: "02",
-    title: "FRONTEND DEVELOPMENT",
-    category: "ARCHITECTURE & PERFORMANCE",
-    description:
-      "Modular, accessible, and clean codebase architecture built with React, TypeScript, Tailwind CSS, and Vite for fast load speeds and long-term code maintainability.",
-    deliverables: [
-      "Type-Safe Component Architecture",
-      "Fast Build & Development Workflow",
-      "Semantic & Accessible HTML5 / ARIA",
-      "Responsive & Maintainable Code Structure",
+      "Bespoke Marketing Websites",
+      "High-End Studio Portfolios",
+      "Interactive Landing Pages",
+      "Editorial Layout Systems",
     ],
     techFocus: "React · TypeScript · Tailwind CSS · Vite",
   },
   {
-    id: "interactive-experiences",
-    number: "03",
-    title: "INTERACTIVE EXPERIENCES",
-    category: "MOTION & CREATIVE WEBGL",
+    id: "ai-automation",
+    number: "02",
+    title: "AI AUTOMATION",
+    category: "INTELLIGENT PIPELINES",
     description:
-      "Choreographed animations and 3D scenes using GSAP, ScrollTrigger, Lenis smooth scrolling, and Three.js where motion heightens clarity and narrative engagement.",
+      "Lead generation, research workflows, data processing, outreach systems and business automation.",
     deliverables: [
-      "GSAP Scroll-Driven Choreography",
-      "Lenis Smooth Scrolling Sync",
-      "Three.js / WebGL Spatial Elements",
-      "Tactile Magnetic & Micro-Interactions",
+      "Lead Discovery & Qualification",
+      "Deep Research Workflows",
+      "Data Processing Pipelines",
+      "Automated Outreach Systems",
+    ],
+    techFocus: "AI APIs · Prompt Engineering · n8n · Webhooks",
+  },
+  {
+    id: "ai-powered-systems",
+    number: "03",
+    title: "AI-POWERED SYSTEMS",
+    category: "AI INTERFACES & TOOLS",
+    description:
+      "AI-assisted tools, intelligent interfaces, internal dashboards and workflow systems.",
+    deliverables: [
+      "Intelligent Web Interfaces",
+      "AI-Assisted Workflow Tools",
+      "Internal Operations Dashboards",
+      "Structured Extraction Systems",
+    ],
+    techFocus: "LLM Orchestration · Tool Calling · Data Pipelines",
+  },
+  {
+    id: "business-web-apps",
+    number: "04",
+    title: "BUSINESS WEB APPS",
+    category: "APPLICATION ARCHITECTURE",
+    description:
+      "Interactive dashboards, forms, calculators, portals and custom web applications.",
+    deliverables: [
+      "Interactive Metric Dashboards",
+      "Custom Calculators & Wizards",
+      "Client & Partner Portals",
+      "Multi-Step Inquiry Funnels",
+    ],
+    techFocus: "React · REST APIs · State Architecture · UI Systems",
+  },
+  {
+    id: "conversion-systems",
+    number: "05",
+    title: "CONVERSION SYSTEMS",
+    category: "ACQUISITION & CONVERSION",
+    description:
+      "Landing pages, lead capture flows, enquiry systems and CTA-driven digital experiences.",
+    deliverables: [
+      "High-Conversion Landing Pages",
+      "Structured Lead Capture Flows",
+      "Commercial RFQ & Quote Forms",
+      "Action-Oriented User Journeys",
+    ],
+    techFocus: "Conversion UI · Form Validation · Analytics Sync",
+  },
+  {
+    id: "digital-experiences",
+    number: "06",
+    title: "DIGITAL EXPERIENCES",
+    category: "CREATIVE MOTION & 3D",
+    description:
+      "Motion design, interaction systems, GSAP experiences and editorial interfaces.",
+    deliverables: [
+      "GSAP ScrollTrigger Choreography",
+      "Lenis Smooth Scroll Sync",
+      "Three.js / WebGL Visual Anchors",
+      "Tactile Micro-Interactions",
     ],
     techFocus: "GSAP · ScrollTrigger · Lenis · Three.js",
-  },
-  {
-    id: "ai-web-development",
-    number: "04",
-    title: "AI × WEB DEVELOPMENT",
-    category: "INTELLIGENT WORKFLOWS",
-    description:
-      "Modern engineering workflows leveraging AI systems to accelerate architecture synthesis, automate comprehensive edge-case testing, and integrate intelligent web features.",
-    deliverables: [
-      "Accelerated Frontend Architecture",
-      "Automated Quality & Edge-Case Verification",
-      "Intelligent Inquiry & Workflow Logic",
-      "AI-Assisted Prototyping & Iteration",
-    ],
-    techFocus: "AI Workflows · Automation · Rapid Prototyping",
-  },
-  {
-    id: "business-websites",
-    number: "05",
-    title: "BUSINESS WEBSITES",
-    category: "COMMERCIAL PLATFORMS",
-    description:
-      "Commercial platforms engineered for enterprises, manufacturers, architectural studios, and service brands to clearly communicate capabilities and capture qualified inquiries.",
-    deliverables: [
-      "Information Architecture for B2B / B2C",
-      "Product & Specification Catalogs",
-      "Commercial RFQ & Inquiry Funnels",
-      "Technical Credibility & Presentation",
-    ],
-    techFocus: "Commercial Portals · RFQ Systems · Catalogs",
-  },
-  {
-    id: "digital-product-experiences",
-    number: "06",
-    title: "DIGITAL PRODUCT EXPERIENCES",
-    category: "INTERACTIVE TOOLS & CONFIGURATORS",
-    description:
-      "Interactive guided finders, selectors, calculators, and immersive product tools that simplify complex decisions and turn passive visitors into engaged buyers.",
-    deliverables: [
-      "Guided Product Selectors & Finders",
-      "Dynamic Filtration & Comparison Tools",
-      "Interactive Schematic Overviews",
-      "Data-Driven Presentation Modals",
-    ],
-    techFocus: "Custom Wizards · Calculators · Spatial Tools",
   },
 ];
 
@@ -116,19 +116,18 @@ export const CapabilitiesSection: FC<CapabilitiesSectionProps> = ({
   onOpenCommission,
 }) => {
   const sectionRef = useRef<HTMLElement>(null);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const prefersReducedMotion = useReducedMotion();
 
   useGSAPContext(() => {
     if (prefersReducedMotion) return;
 
-    gsap.from(".capability-row", {
+    gsap.from(".capability-card", {
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "top 75%",
       },
       opacity: 0,
-      y: 20,
+      y: 24,
       duration: 0.7,
       stagger: 0.08,
       ease: "power3.out",
@@ -154,7 +153,7 @@ export const CapabilitiesSection: FC<CapabilitiesSectionProps> = ({
               WHAT I BUILD
             </h2>
             <p className="text-sm sm:text-base text-muted-foreground max-w-2xl font-normal leading-relaxed">
-              End-to-end digital craft tailored to commercial objectives, aesthetic standards, and modern performance expectations.
+              End-to-end digital craft and AI automation tailored to commercial objectives, aesthetic standards, and modern operational expectations.
             </p>
           </div>
 
@@ -171,94 +170,66 @@ export const CapabilitiesSection: FC<CapabilitiesSectionProps> = ({
           </Button>
         </div>
 
-        {/* Editorial Interactive Rows */}
-        <div className="divide-y divide-white/[0.07] border-y border-white/[0.07]" role="list">
-          {CAPABILITY_ROWS.map((item, index) => {
-            const isHovered = hoveredIndex === index;
-
-            return (
-              <div
-                key={item.id}
-                role="listitem"
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                className={`capability-row group relative transition-all duration-300 py-8 sm:py-10 px-3 sm:px-6 cursor-pointer ${
-                  isHovered ? "bg-[#0a0d14]/70" : "bg-transparent"
-                }`}
-                data-cursor="EXPLORE"
-              >
-                {/* Subtle Left Accent Line on Hover */}
-                <div
-                  className={`absolute left-0 top-0 bottom-0 w-0.5 bg-accent-cyan transition-all duration-300 ${
-                    isHovered ? "opacity-100 scale-y-100" : "opacity-0 scale-y-0"
-                  }`}
-                  aria-hidden="true"
-                />
-
-                {/* Main Row Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-                  {/* Number & Title */}
-                  <div className="lg:col-span-5 space-y-2">
-                    <div className="flex items-baseline gap-3">
-                      <span
-                        className={`font-mono text-xs font-bold tracking-widest transition-colors ${
-                          isHovered ? "text-accent-cyan" : "text-muted-foreground/80"
-                        }`}
-                      >
-                        {item.number}
-                      </span>
-                      <span className="text-[10px] font-mono tracking-widest text-muted-foreground/60 uppercase">
-                        {item.category}
-                      </span>
-                    </div>
-                    <h3
-                      className={`text-2xl sm:text-3xl font-extrabold tracking-tight font-display transition-all duration-300 flex items-center gap-3 ${
-                        isHovered ? "text-accent-cyan translate-x-2" : "text-foreground"
-                      }`}
-                    >
-                      <span>{item.title}</span>
-                      <ArrowUpRight
-                        className={`w-5 h-5 transition-all duration-300 ${
-                          isHovered ? "opacity-100 translate-x-0.5 -translate-y-0.5 text-accent-cyan" : "opacity-0 -translate-x-2"
-                        }`}
-                      />
-                    </h3>
-                    <div className="text-[11px] font-mono text-muted-foreground/60 flex items-center gap-1.5 pt-0.5">
-                      <Sparkles className="w-3 h-3 text-accent-cyan/60" />
-                      <span>{item.techFocus}</span>
-                    </div>
+        {/* Responsive Capability Grid: 2 columns on lg / 3 columns on xl */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" role="list">
+          {CAPABILITIES.map((item) => (
+            <div
+              key={item.id}
+              role="listitem"
+              className="capability-card group relative p-6 sm:p-7 rounded-2xl bg-[#07090e]/90 border border-white/[0.08] hover:border-accent-cyan/40 hover:bg-[#0a0d14] transition-all duration-300 flex flex-col justify-between space-y-6 shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+              data-cursor="EXPLORE"
+            >
+              {/* Top Row: Index & Category */}
+              <div className="space-y-3">
+                <div className="flex items-center justify-between border-b border-white/[0.06] pb-3.5">
+                  <div className="flex items-center gap-2 font-mono text-xs">
+                    <span className="text-accent-cyan font-bold tracking-widest">{item.number}</span>
+                    <span className="text-white/20">&middot;</span>
+                    <span className="text-[10px] tracking-wider text-muted-foreground/70 uppercase">
+                      {item.category}
+                    </span>
                   </div>
+                  <div className="w-2 h-2 rounded-full bg-accent-cyan/20 group-hover:bg-accent-cyan transition-colors" />
+                </div>
 
-                  {/* Description */}
-                  <div className="lg:col-span-4 space-y-2">
-                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      {item.description}
-                    </p>
+                {/* Title */}
+                <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight font-display text-foreground group-hover:text-accent-cyan transition-colors flex items-center justify-between">
+                  <span>{item.title}</span>
+                  <ArrowUpRight className="w-4 h-4 text-accent-cyan opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                </h3>
+
+                {/* Description */}
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+
+              {/* Bottom Row: Deliverables & Tech Focus */}
+              <div className="space-y-4 pt-4 border-t border-white/[0.06]">
+                <div className="space-y-2">
+                  <div className="text-[10px] font-mono tracking-widest text-muted-foreground/50 uppercase">
+                    CORE DELIVERABLES
                   </div>
-
-                  {/* Deliverables */}
-                  <div className="lg:col-span-3 lg:border-l lg:border-white/5 lg:pl-6 space-y-1.5">
-                    <div className="text-[10px] font-mono tracking-widest text-muted-foreground/50 uppercase mb-2">
-                      KEY DELIVERABLES
-                    </div>
+                  <div className="space-y-1.5">
                     {item.deliverables.map((deliv, idx) => (
                       <div
                         key={idx}
-                        className="flex items-center gap-2 text-xs font-mono text-muted-foreground"
+                        className="flex items-center gap-2 text-xs font-mono text-muted-foreground/90"
                       >
-                        <CheckCircle2
-                          className={`w-3 h-3 shrink-0 transition-colors ${
-                            isHovered ? "text-accent-cyan" : "text-muted-foreground/40"
-                          }`}
-                        />
-                        <span className="text-[11px]">{deliv}</span>
+                        <CheckCircle2 className="w-3 h-3 text-accent-cyan/70 shrink-0" />
+                        <span className="text-[11px] leading-snug">{deliv}</span>
                       </div>
                     ))}
                   </div>
                 </div>
+
+                <div className="pt-2 border-t border-white/[0.04] flex items-center gap-1.5 text-[10px] font-mono text-accent-cyan/80">
+                  <Sparkles className="w-3 h-3 text-accent-cyan/60 shrink-0" />
+                  <span className="truncate">{item.techFocus}</span>
+                </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </div>
     </section>
