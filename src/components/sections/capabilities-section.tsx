@@ -127,17 +127,17 @@ export const CapabilitiesSection: FC<CapabilitiesSectionProps> = ({
     <section
       ref={sectionRef}
       id="services"
-      className="relative z-10 py-28 sm:py-36 px-4 sm:px-8 lg:px-12 bg-void text-foreground border-t border-white/[0.06]"
+      className="relative z-10 pt-20 pb-16 sm:pt-24 sm:pb-20 lg:pt-28 lg:pb-24 px-4 sm:px-8 lg:px-12 bg-void text-foreground border-t border-white/[0.06]"
       aria-label="Services and Core Capabilities"
     >
       {/* Anchor alias for compatibility */}
       <span id="capabilities" className="sr-only" aria-hidden="true" />
 
-      <div className="max-w-6xl mx-auto space-y-12 sm:space-y-16">
+      <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-8 border-b border-white/[0.07]">
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 font-mono text-xs text-accent-cyan tracking-widest uppercase">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-8 sm:pb-10 border-b border-white/[0.07]">
+          <div>
+            <div className="flex items-center gap-2 font-mono text-xs text-accent-cyan tracking-widest uppercase mb-4 sm:mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan" aria-hidden="true" />
               <span>03 &middot; SERVICES</span>
             </div>
@@ -147,12 +147,12 @@ export const CapabilitiesSection: FC<CapabilitiesSectionProps> = ({
                 TO SYSTEMS.
               </span>
             </h2>
-            <p className="text-sm sm:text-base text-muted-foreground max-w-2xl font-normal leading-relaxed">
+            <p className="mt-5 sm:mt-6 text-sm sm:text-base text-muted-foreground max-w-2xl font-normal leading-relaxed">
               We combine business thinking, visual design and engineering to create digital experiences that are built to perform.
             </p>
           </div>
 
-          <div className="hidden sm:flex items-center gap-3 shrink-0">
+          <div className="hidden sm:flex items-center gap-3 shrink-0 pb-1">
             <Button
               type="button"
               onClick={onOpenCommission}
@@ -168,7 +168,7 @@ export const CapabilitiesSection: FC<CapabilitiesSectionProps> = ({
         </div>
 
         {/* Four Core Service Pillars Grid (2x2 Layout on Desktop) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mt-10 sm:mt-12 lg:mt-14">
           {SERVICES.map((service) => (
             <article
               key={service.id}
@@ -235,7 +235,7 @@ export const CapabilitiesSection: FC<CapabilitiesSectionProps> = ({
         </div>
 
         {/* Section Bottom CTAs */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-8 border-t border-white/[0.07]">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mt-10 sm:mt-12 lg:mt-14 pt-8 border-t border-white/[0.07]">
           <div className="text-xs font-mono text-muted-foreground">
             SS STUDIO &middot; STRATEGY &middot; DESIGN &middot; DEVELOPMENT &middot; AI
           </div>

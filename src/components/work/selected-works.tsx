@@ -72,17 +72,17 @@ export const SelectedWorks: FC<SelectedWorksProps> = ({
     <section
       ref={sectionRef}
       id="work"
-      className="relative z-10 py-28 sm:py-36 px-4 sm:px-8 lg:px-12 bg-void text-foreground border-t border-white/[0.06]"
+      className="relative z-10 pt-20 pb-16 sm:pt-24 sm:pb-20 lg:pt-28 lg:pb-24 px-4 sm:px-8 lg:px-12 bg-void text-foreground border-t border-white/[0.06]"
       aria-label="Selected Works & Portfolio Showcase"
     >
       {/* Anchor alias for compatibility */}
       <span id="works" className="sr-only" aria-hidden="true" />
 
       {/* Section Header */}
-      <div className="max-w-6xl mx-auto mb-12 sm:mb-16 lg:mb-20">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-8 border-b border-white/[0.07]">
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 font-mono text-xs text-accent-cyan tracking-widest uppercase">
+      <div className="max-w-6xl mx-auto mb-10 sm:mb-12 lg:mb-14">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-8 sm:pb-10 border-b border-white/[0.07]">
+          <div>
+            <div className="flex items-center gap-2 font-mono text-xs text-accent-cyan tracking-widest uppercase mb-4 sm:mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan" aria-hidden="true" />
               <span>01 &middot; SELECTED WORK</span>
             </div>
@@ -92,13 +92,13 @@ export const SelectedWorks: FC<SelectedWorksProps> = ({
                 BUILT ACROSS INDUSTRIES.
               </span>
             </h2>
-            <p className="text-sm sm:text-base text-muted-foreground max-w-2xl font-normal leading-relaxed">
+            <p className="mt-5 sm:mt-6 text-sm sm:text-base text-muted-foreground max-w-2xl font-normal leading-relaxed">
               A selection of business websites, digital experiences and industry-focused concepts developed by SS STUDIO.
             </p>
           </div>
 
           {/* Sticky Progress Indicator (Desktop) */}
-          <div className="hidden sm:block">
+          <div className="hidden sm:block pb-1">
             <ProjectProgress
               currentIndex={activeProjectIndex}
               total={SELECTED_PROJECTS.length}

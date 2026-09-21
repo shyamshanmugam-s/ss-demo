@@ -240,14 +240,14 @@ export const IndustriesSection: FC<IndustriesSectionProps> = ({
     <section
       ref={sectionRef}
       id="industries"
-      className="relative z-10 py-24 sm:py-32 lg:py-36 px-4 sm:px-8 lg:px-12 bg-void text-foreground border-t border-white/[0.06]"
+      className="relative z-10 pt-20 pb-16 sm:pt-24 sm:pb-20 lg:pt-28 lg:pb-24 px-4 sm:px-8 lg:px-12 bg-void text-foreground border-t border-white/[0.06]"
       aria-label="Industries and Commercial Sectors"
     >
-      <div className="max-w-6xl mx-auto space-y-12 sm:space-y-16">
+      <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-8 border-b border-white/[0.07]">
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 font-mono text-xs text-accent-cyan tracking-widest uppercase">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-8 sm:pb-10 border-b border-white/[0.07]">
+          <div>
+            <div className="flex items-center gap-2 font-mono text-xs text-accent-cyan tracking-widest uppercase mb-4 sm:mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan" aria-hidden="true" />
               <span>02 &middot; INDUSTRIES</span>
             </div>
@@ -257,12 +257,12 @@ export const IndustriesSection: FC<IndustriesSectionProps> = ({
                 THE BUSINESS.
               </span>
             </h2>
-            <p className="text-sm sm:text-base text-muted-foreground max-w-2xl font-normal leading-relaxed">
+            <p className="mt-5 sm:mt-6 text-sm sm:text-base text-muted-foreground max-w-2xl font-normal leading-relaxed">
               Different industries require different digital experiences. SS STUDIO adapts strategy, design, content and technology to the way each business operates.
             </p>
           </div>
 
-          <div className="hidden sm:flex items-center gap-3 shrink-0">
+          <div className="hidden sm:flex items-center gap-3 shrink-0 pb-1">
             <button
               type="button"
               onClick={handleScrollToWork}
@@ -276,7 +276,7 @@ export const IndustriesSection: FC<IndustriesSectionProps> = ({
         </div>
 
         {/* Interactive Industry Showcase Container */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start mt-10 sm:mt-12 lg:mt-14">
           {/* Mobile: Horizontally Scrollable Sector Chips (< lg) */}
           <div
             role="tablist"
@@ -327,7 +327,7 @@ export const IndustriesSection: FC<IndustriesSectionProps> = ({
           <div
             role="tablist"
             aria-label="Industry selection tabs (Desktop)"
-            className="hidden lg:flex lg:col-span-5 flex-col space-y-2"
+            className="hidden lg:flex lg:col-span-5 lg:sticky lg:top-28 flex-col space-y-2"
           >
             {INDUSTRIES.map((ind, index) => {
               const Icon = ind.icon;
@@ -343,38 +343,38 @@ export const IndustriesSection: FC<IndustriesSectionProps> = ({
                   aria-controls={`industry-panel-${ind.id}`}
                   tabIndex={0}
                   onClick={() => setActiveTab(index)}
-                  className={`industry-selector-item w-full text-left p-4 sm:p-4.5 rounded-xl border transition-all duration-300 flex items-center justify-between cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent-cyan ${
+                  className={`industry-selector-item w-full text-left p-3.5 sm:p-4 rounded-xl border transition-all duration-200 flex items-center justify-between cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent-cyan ${
                     isSelected
-                      ? "bg-surface-elevated/95 border-accent-cyan/40 shadow-[0_4px_24px_rgba(0,242,254,0.07)]"
+                      ? "bg-surface-elevated/95 border-accent-cyan/50 shadow-[0_4px_24px_rgba(0,242,254,0.08)] border-l-4 border-l-accent-cyan"
                       : "bg-[#090b0f]/60 border-white/[0.06] hover:border-white/15 hover:bg-[#0c0f16]"
                   }`}
                 >
-                  <div className="flex items-center gap-3.5">
+                  <div className="flex items-center gap-3">
                     <div
-                      className={`w-9 h-9 rounded-lg flex items-center justify-center transition-colors ${
+                      className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors shrink-0 ${
                         isSelected
                           ? "bg-accent-cyan/15 text-accent-cyan border border-accent-cyan/30"
                           : "bg-surface-elevated text-muted-foreground border border-white/[0.06]"
                       }`}
                     >
-                      <Icon className="w-4 h-4" />
+                      <Icon className="w-3.5 h-3.5" />
                     </div>
                     <div>
                       <div
-                        className={`text-sm font-bold font-display tracking-tight ${
-                          isSelected ? "text-foreground" : "text-foreground/80"
+                        className={`text-xs sm:text-sm font-bold font-display tracking-tight ${
+                          isSelected ? "text-foreground font-extrabold" : "text-foreground/80"
                         }`}
                       >
                         {ind.name}
                       </div>
-                      <div className="text-[11px] font-mono text-muted-foreground">
+                      <div className="text-[10px] sm:text-[11px] font-mono text-muted-foreground truncate max-w-[240px]">
                         {ind.category}
                       </div>
                     </div>
                   </div>
 
                   <span
-                    className={`font-mono text-xs ${
+                    className={`font-mono text-xs shrink-0 ${
                       isSelected ? "text-accent-cyan font-bold" : "text-muted-foreground/40"
                     }`}
                   >
@@ -483,7 +483,7 @@ export const IndustriesSection: FC<IndustriesSectionProps> = ({
         </div>
 
         {/* Section Bottom CTAs */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-8 border-t border-white/[0.07]">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mt-10 sm:mt-12 lg:mt-14 pt-8 border-t border-white/[0.07]">
           <div className="text-xs font-mono text-muted-foreground">
             SS STUDIO &middot; TAILORED SECTOR ARCHITECTURE
           </div>

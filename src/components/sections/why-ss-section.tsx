@@ -120,17 +120,17 @@ export const WhySSSection: FC<WhySSSectionProps> = ({ onOpenCommission }) => {
     <section
       ref={sectionRef}
       id="why-ss"
-      className="relative z-10 py-28 sm:py-36 px-4 sm:px-8 lg:px-12 bg-void text-foreground border-t border-white/[0.06]"
+      className="relative z-10 pt-20 pb-16 sm:pt-24 sm:pb-20 lg:pt-28 lg:pb-24 px-4 sm:px-8 lg:px-12 bg-void text-foreground border-t border-white/[0.06]"
       aria-label="Why SS Studio - Working Principles & Craft"
     >
       {/* Anchor alias for compatibility */}
       <span id="about" className="sr-only" aria-hidden="true" />
 
-      <div className="max-w-6xl mx-auto space-y-12 sm:space-y-16">
+      <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-8 border-b border-white/[0.07]">
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 font-mono text-xs text-accent-cyan tracking-widest uppercase">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-8 sm:pb-10 border-b border-white/[0.07]">
+          <div>
+            <div className="flex items-center gap-2 font-mono text-xs text-accent-cyan tracking-widest uppercase mb-4 sm:mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan" aria-hidden="true" />
               <span>06 &middot; WHY SS</span>
             </div>
@@ -140,12 +140,12 @@ export const WhySSSection: FC<WhySSSectionProps> = ({ onOpenCommission }) => {
                 INTENT.
               </span>
             </h2>
-            <p className="text-sm sm:text-base text-muted-foreground max-w-2xl font-normal leading-relaxed">
+            <p className="mt-5 sm:mt-6 text-sm sm:text-base text-muted-foreground max-w-2xl font-normal leading-relaxed">
               Every project starts with the business, not a template — then strategy, design and engineering are shaped around what the experience needs to achieve.
             </p>
           </div>
 
-          <div className="hidden sm:flex items-center gap-3 shrink-0">
+          <div className="hidden sm:flex items-center gap-3 shrink-0 pb-1">
             <Button
               type="button"
               onClick={handleAction}
@@ -161,7 +161,7 @@ export const WhySSSection: FC<WhySSSectionProps> = ({ onOpenCommission }) => {
         </div>
 
         {/* Four Positioning Principles: 2x2 Architectural Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mt-10 sm:mt-12 lg:mt-14">
           {PRINCIPLES.map((principle) => (
             <article
               key={principle.number}
@@ -219,7 +219,7 @@ export const WhySSSection: FC<WhySSSectionProps> = ({ onOpenCommission }) => {
         </div>
 
         {/* Restrained Micro Principle Banner */}
-        <div className="why-ss-micro rounded-xl sm:rounded-2xl border border-white/[0.08] bg-[#07090e]/90 p-5 sm:p-7 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        <div className="why-ss-micro rounded-xl sm:rounded-2xl border border-white/[0.08] bg-[#07090e]/90 p-5 sm:p-7 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left mt-8 sm:mt-10">
           <div className="flex items-center gap-3">
             <ShieldCheck className="w-5 h-5 text-accent-cyan shrink-0 hidden sm:block" />
             <div className="space-y-0.5">
@@ -238,7 +238,7 @@ export const WhySSSection: FC<WhySSSectionProps> = ({ onOpenCommission }) => {
         </div>
 
         {/* Section Bottom CTAs */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-8 border-t border-white/[0.07]">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mt-10 sm:mt-12 lg:mt-14 pt-8 border-t border-white/[0.07]">
           <div className="text-xs font-mono text-muted-foreground">
             SS STUDIO &middot; BUSINESS FIRST &middot; BESPOKE ARCHITECTURE
           </div>

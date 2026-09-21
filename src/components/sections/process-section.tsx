@@ -202,14 +202,14 @@ export const ProcessSection: FC<ProcessSectionProps> = ({ onOpenCommission }) =>
     <section
       ref={sectionRef}
       id="process"
-      className="relative z-10 py-28 sm:py-36 px-4 sm:px-8 lg:px-12 bg-void text-foreground border-t border-white/[0.06]"
+      className="relative z-10 pt-20 pb-16 sm:pt-24 sm:pb-20 lg:pt-28 lg:pb-24 px-4 sm:px-8 lg:px-12 bg-void text-foreground border-t border-white/[0.06]"
       aria-label="Delivery Process & Methodology"
     >
-      <div className="max-w-6xl mx-auto space-y-12 sm:space-y-16">
+      <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-8 border-b border-white/[0.07]">
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 font-mono text-xs text-accent-cyan tracking-widest uppercase">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-8 sm:pb-10 border-b border-white/[0.07]">
+          <div>
+            <div className="flex items-center gap-2 font-mono text-xs text-accent-cyan tracking-widest uppercase mb-4 sm:mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan" aria-hidden="true" />
               <span>05 &middot; PROCESS</span>
             </div>
@@ -219,12 +219,12 @@ export const ProcessSection: FC<ProcessSectionProps> = ({ onOpenCommission }) =>
                 QUESTION TO LAUNCH.
               </span>
             </h2>
-            <p className="text-sm sm:text-base text-muted-foreground max-w-2xl font-normal leading-relaxed">
+            <p className="mt-5 sm:mt-6 text-sm sm:text-base text-muted-foreground max-w-2xl font-normal leading-relaxed">
               A structured process keeps strategy, design and engineering aligned from the first conversation to the final release.
             </p>
           </div>
 
-          <div className="hidden sm:flex items-center gap-3 shrink-0">
+          <div className="hidden sm:flex items-center gap-3 shrink-0 pb-1">
             <Button
               type="button"
               onClick={onOpenCommission}
@@ -240,12 +240,58 @@ export const ProcessSection: FC<ProcessSectionProps> = ({ onOpenCommission }) =>
         </div>
 
         {/* Process Navigator: 2-Column Split View */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left Column: 7 Stage Selector Buttons (5 Columns) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start mt-10 sm:mt-12 lg:mt-14">
+          {/* Mobile: Horizontally Scrollable Stage Chips (< lg) */}
           <div
             role="tablist"
-            aria-label="Process delivery stages"
-            className="lg:col-span-5 space-y-2"
+            aria-label="Process delivery stages (Mobile)"
+            className="lg:hidden flex overflow-x-auto pb-2 gap-2.5 scrollbar-none -mx-4 px-4 sm:-mx-8 sm:px-8 select-none"
+          >
+            {PROCESS_STAGES.map((stage, idx) => {
+              const Icon = stage.icon;
+              const isSelected = activeStageIndex === idx;
+
+              return (
+                <button
+                  key={`m-${stage.number}`}
+                  id={`m-process-tab-${stage.number}`}
+                  role="tab"
+                  type="button"
+                  aria-selected={isSelected}
+                  aria-controls={`process-panel-${stage.number}`}
+                  tabIndex={0}
+                  onClick={() => setActiveStageIndex(idx)}
+                  className={`shrink-0 px-4 py-2.5 rounded-xl border font-mono text-xs transition-all duration-200 flex items-center gap-2.5 cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent-cyan ${
+                    isSelected
+                      ? "bg-accent-cyan/15 border-accent-cyan/50 text-foreground font-bold shadow-[0_0_15px_rgba(0,242,254,0.15)]"
+                      : "bg-[#090b0f]/80 border-white/[0.08] text-muted-foreground hover:border-white/20 hover:text-foreground"
+                  }`}
+                >
+                  <Icon
+                    className={`w-3.5 h-3.5 ${
+                      isSelected ? "text-accent-cyan" : "text-muted-foreground/60"
+                    }`}
+                  />
+                  <span className="font-display font-bold">{stage.title}</span>
+                  <span
+                    className={`text-[10px] px-1.5 py-0.5 rounded ${
+                      isSelected
+                        ? "bg-accent-cyan/20 text-accent-cyan"
+                        : "bg-white/5 text-muted-foreground/50"
+                    }`}
+                  >
+                    {stage.number}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Desktop: Vertical Stage Navigator (>= lg) */}
+          <div
+            role="tablist"
+            aria-label="Process delivery stages (Desktop)"
+            className="hidden lg:flex lg:col-span-5 lg:sticky lg:top-28 flex-col space-y-2"
           >
             {PROCESS_STAGES.map((stage, idx) => {
               const Icon = stage.icon;
@@ -261,27 +307,27 @@ export const ProcessSection: FC<ProcessSectionProps> = ({ onOpenCommission }) =>
                   aria-controls={`process-panel-${stage.number}`}
                   tabIndex={0}
                   onClick={() => setActiveStageIndex(idx)}
-                  className={`process-selector-btn w-full text-left p-4 sm:p-4.5 rounded-xl border transition-all duration-300 flex items-center justify-between cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent-cyan ${
+                  className={`process-selector-btn w-full text-left p-3.5 sm:p-4 rounded-xl border transition-all duration-200 flex items-center justify-between cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent-cyan ${
                     isSelected
-                      ? "bg-surface-elevated/95 border-accent-cyan/40 shadow-[0_4px_24px_rgba(0,242,254,0.07)]"
+                      ? "bg-surface-elevated/95 border-accent-cyan/50 shadow-[0_4px_24px_rgba(0,242,254,0.08)] border-l-4 border-l-accent-cyan"
                       : "bg-[#090b0f]/60 border-white/[0.06] hover:border-white/15 hover:bg-[#0c0f16]"
                   }`}
                 >
-                  <div className="flex items-center gap-3.5">
+                  <div className="flex items-center gap-3">
                     <div
-                      className={`w-9 h-9 rounded-lg flex items-center justify-center transition-colors ${
+                      className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors shrink-0 ${
                         isSelected
                           ? "bg-accent-cyan/15 text-accent-cyan border border-accent-cyan/30"
                           : "bg-surface-elevated text-muted-foreground border border-white/[0.06]"
                       }`}
                     >
-                      <Icon className="w-4 h-4" />
+                      <Icon className="w-3.5 h-3.5" />
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
                         <span
-                          className={`text-sm font-bold font-display tracking-tight ${
-                            isSelected ? "text-foreground" : "text-foreground/80"
+                          className={`text-xs sm:text-sm font-bold font-display tracking-tight ${
+                            isSelected ? "text-foreground font-extrabold" : "text-foreground/80"
                           }`}
                         >
                           {stage.title}
@@ -292,14 +338,14 @@ export const ProcessSection: FC<ProcessSectionProps> = ({ onOpenCommission }) =>
                           </span>
                         )}
                       </div>
-                      <div className="text-[11px] font-mono text-muted-foreground">
+                      <div className="text-[10px] sm:text-[11px] font-mono text-muted-foreground">
                         {stage.marker}
                       </div>
                     </div>
                   </div>
 
                   <span
-                    className={`font-mono text-xs ${
+                    className={`font-mono text-xs shrink-0 ${
                       isSelected ? "text-accent-cyan font-bold" : "text-muted-foreground/40"
                     }`}
                   >
@@ -398,7 +444,7 @@ export const ProcessSection: FC<ProcessSectionProps> = ({ onOpenCommission }) =>
         </div>
 
         {/* Section Bottom CTAs */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-8 border-t border-white/[0.07]">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mt-10 sm:mt-12 lg:mt-14 pt-8 border-t border-white/[0.07]">
           <div className="text-xs font-mono text-muted-foreground">
             SS STUDIO &middot; METHODOLOGY &middot; 7 STAGES TO PRODUCTION
           </div>

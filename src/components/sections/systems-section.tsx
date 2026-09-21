@@ -145,14 +145,14 @@ export const SystemsSection: FC<SystemsSectionProps> = ({ onOpenCommission }) =>
     <section
       ref={sectionRef}
       id="systems"
-      className="relative z-10 py-28 sm:py-36 px-4 sm:px-8 lg:px-12 bg-void text-foreground border-t border-white/[0.06]"
+      className="relative z-10 pt-20 pb-16 sm:pt-24 sm:pb-20 lg:pt-28 lg:pb-24 px-4 sm:px-8 lg:px-12 bg-void text-foreground border-t border-white/[0.06]"
       aria-label="Digital Systems and AI Capabilities"
     >
-      <div className="max-w-6xl mx-auto space-y-12 sm:space-y-16">
+      <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-8 border-b border-white/[0.07]">
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 font-mono text-xs text-accent-cyan tracking-widest uppercase">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-8 sm:pb-10 border-b border-white/[0.07]">
+          <div>
+            <div className="flex items-center gap-2 font-mono text-xs text-accent-cyan tracking-widest uppercase mb-4 sm:mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan" aria-hidden="true" />
               <span>04 &middot; DIGITAL SYSTEMS</span>
             </div>
@@ -162,12 +162,12 @@ export const SystemsSection: FC<SystemsSectionProps> = ({ onOpenCommission }) =>
                 BUILT INTO THE EXPERIENCE.
               </span>
             </h2>
-            <p className="text-sm sm:text-base text-muted-foreground max-w-2xl font-normal leading-relaxed">
+            <p className="mt-5 sm:mt-6 text-sm sm:text-base text-muted-foreground max-w-2xl font-normal leading-relaxed">
               Beyond the website, we design AI-powered experiences and connected workflows that help businesses make information easier to access and repetitive processes easier to manage.
             </p>
           </div>
 
-          <div className="hidden sm:flex items-center gap-3 shrink-0">
+          <div className="hidden sm:flex items-center gap-3 shrink-0 pb-1">
             <Button
               type="button"
               onClick={onOpenCommission}
@@ -183,7 +183,7 @@ export const SystemsSection: FC<SystemsSectionProps> = ({ onOpenCommission }) =>
         </div>
 
         {/* 4 Primary System Capabilities: 2x2 Architectural Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mt-10 sm:mt-12 lg:mt-14">
           {SYSTEM_CAPABILITIES.map((sys) => {
             const Icon = sys.icon;
 
@@ -248,7 +248,7 @@ export const SystemsSection: FC<SystemsSectionProps> = ({ onOpenCommission }) =>
         </div>
 
         {/* Conceptual Differentiation Banner: WEBSITE ↓ SYSTEM */}
-        <div className="system-bridge-card rounded-2xl sm:rounded-3xl border border-white/[0.08] bg-[#07090e]/90 p-6 sm:p-10 space-y-6">
+        <div className="system-bridge-card rounded-2xl sm:rounded-3xl border border-white/[0.08] bg-[#07090e]/90 p-6 sm:p-10 space-y-6 mt-8 sm:mt-10">
           <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/[0.06] pb-4">
             <div className="text-xs font-mono text-accent-cyan tracking-widest uppercase font-bold">
               THE CONCEPTUAL FRAMEWORK
@@ -317,7 +317,7 @@ export const SystemsSection: FC<SystemsSectionProps> = ({ onOpenCommission }) =>
         </div>
 
         {/* Section Bottom CTAs */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-8 border-t border-white/[0.07]">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mt-10 sm:mt-12 lg:mt-14 pt-8 border-t border-white/[0.07]">
           <div className="text-xs font-mono text-muted-foreground">
             SS STUDIO &middot; DIGITAL EXPERIENCES &times; BUSINESS WORKFLOWS
           </div>

@@ -42,7 +42,7 @@ export const ContactSection: FC<ContactSectionProps> = ({ onOpenCommission }) =>
     <section
       ref={sectionRef}
       id="contact"
-      className="relative z-10 py-28 sm:py-40 px-4 sm:px-8 lg:px-12 bg-void text-foreground border-t border-white/[0.06] overflow-hidden"
+      className="relative z-10 pt-20 pb-20 sm:pt-28 sm:pb-28 lg:pt-32 lg:pb-32 px-4 sm:px-8 lg:px-12 bg-void text-foreground border-t border-white/[0.06] overflow-hidden"
       aria-label="Contact and Start a Project"
     >
       {/* Subtle radial glow */}
